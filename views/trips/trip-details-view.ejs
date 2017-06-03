@@ -1,0 +1,134 @@
+<%if(typeof user === "undefined"){%>
+
+  <!-- proba -->
+  <section id="testimonials">
+  <div class="container wow fadeInUp">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="section-title">Testimonials</h3>
+        <div class="section-title-divider"></div>
+        <p class="section-description">Erdo lide, nora porodo filece, salvam esse se, quod concedimus ses haec dicturum fuisse</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile">
+          <div class="picture"><img src="<%= trip.photoAddress %>" alt=""></div>
+          <h4>Traveller <span class="travName">TRAVELLER'S NAME</span> was in <%= trip.cityVisited %>, <%= trip.country %> </h4>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="quote">
+          <h5> Year: <%= trip.yearVisited %></h5>
+          <b><img src="/img/quote_sign_left.png" alt=""></b> <%= trip.description %> <small><img src="/img/quote_sign_right.png" alt=""></small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </section>
+  <!-- kraj probe -->
+
+
+
+
+
+  <h3><%= trip.country %> , <%= trip.cityVisited %></h3>
+  <h5> Year: <%= trip.yearVisited %></h5>
+  <p data-toggle="modal" data-target="#loginModal"><a href="#"> Details </a>.</p>
+  <% } else { %>
+
+
+          <h3><%= trip.country %> , <%= trip.cityVisited %></h3>
+          <h5> Year: <%= trip.yearVisited %></h5>
+
+          <h5> I stayed: <%= trip.daysStayed %> </h5>
+          <h5> This trip I'll remember because... <%= trip.tripSomething %></h5>
+
+          <h5> Description <%= trip.tripDescription %></h5>
+
+          <% if (trip.thingsSeen){ %>
+          <h5> Tourist attractions seen <%= trip.thingsSeen %></h5>
+          <% } %>
+
+
+          <p>My trip photos</p>
+          <%trip.photoAddress.forEach((photoAddress)=>{%>
+
+            <img class="pic" src="<%= photoAddress %>">
+
+          <%});%>
+
+          <% } %>
+
+
+          <!-- login modal -->
+
+          <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h3 class="modal-title" id="lineModalLabel">Log in to iTraveller</h3>
+              </div>
+              <div class="modal-body main-center">
+                <form method="post" action="/login" class="form-horizontal" >
+
+
+                        <div class="form-group">
+                          <label for="username-input" class="cols-sm-2 control-label"> Account Name </label>
+                          <div class="cols-sm-10">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                <input id="username-input" type="text" name="loginUsername" class="form-control" placeholder="Enter your username" required>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="password-input" class="cols-sm-2 control-label"> Password </label>
+                          <div class="cols-sm-10">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input id="password-input" type="password" name="loginPassword" class="form-control"  placeholder="Enter your Password" required>
+                            </div>
+                          </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-md btn-block">Log in</button>
+
+              </form>
+              <br>
+              <!-- <a href="/auth/facebook"> Log in with Facebook </a>
+              <br>
+
+              <a href="/auth/google"> Log in with Google </a>
+              <br> -->
+              <div class="row text-center sign-with">
+                  <div class="col-md-12">
+                      <h3>Sign in with</h3>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="btn-group btn-group-justified">
+                      <a href="/auth/facebook" class="btn btn-primary"> Facebook </a>
+                      <a href="/auth/google" class="btn btn-danger"> Google </a>
+                    </div>
+                  </div>
+              </div>
+
+              <p data-toggle="modal" data-target="#signupModal" data-dismiss="modal">
+                Don't have an account?
+                <a href="#"> Sign Up </a>
+              </p>
+              </div>
+              <div class="modal-footer">
+                <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
