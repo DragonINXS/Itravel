@@ -23,6 +23,9 @@ const tripSchema = new Schema(
       },
     // user as a subdocument
     // owner: {type: User.Schema}
+
+    quote:[ 'Dont cry because its over, smile because it happened. Dr. Seuss',
+    'second', 'third', 'fourth']
   },
   {
     timestamps: true

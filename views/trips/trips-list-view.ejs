@@ -22,7 +22,7 @@
         <li>
           <div class="row">
             <div class="col-sm-3">
-              <a href="#"><img class="pic" src="<%= oneTrip.photoAddress %>"></a>
+              <a href="#"><img class="picDetail" src="<%= oneTrip.photoAddress[0]%>"></a>
               <br><br>
             </div>
 
@@ -34,7 +34,6 @@
               <a href="/trips/<%= oneTrip._id %>/edit ">Edit</a>
               <form action="/trips/<%= oneTrip._id %>/delete" method="post">
                 <button >Delete</button>
-                <!-- <a id="dataConfirmOK" data-confirm="Are you sure you want to delete?">Delete</a> -->
               </form>
             </div>
           </div>

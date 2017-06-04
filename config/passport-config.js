@@ -157,7 +157,7 @@ passport.use(new LocalStrategy(
         if (!theUser){ //!theUser ==> user does not exist
                     // false means "Log in failed"
                     //  |
-          next(null, false, { message: 'Did you forget your username?!?!' });
+          next(null, false, { message: 'Username is not correct.' });
           return; //            |
                   //            V
                   //        message -> req.flash ('error')
@@ -169,21 +169,17 @@ passport.use(new LocalStrategy(
             // console.log(theUser.encryptedPassword);
         if (!bcrypt.compareSync(loginPassword, theUser.encryptedPassword)){
               // false in 2nd arg means "log in failed"
-          next(null, false, { message: 'That would not be the one buddy!'}); //this is the callback in which we are telling passport there's no user
-                            //we tell passport that in 2nd arg, so we have to put something as a 1st arg
-                            //usualy that is "null"
+          next(null, false, { message: 'Password is not correct.'});
           return;
         }
         console.log("~~~22222222222222222222~~~");
         theUser.logInCount+=1;
         theUser.save((err, theUser)=>{
 
-        //give passport theUser's details (SUCCESS!)
         //null means login didn't fail
-        next(null, theUser, {                                             //  |
-          message: `Login for ${theUser.username} successful. 🏆`         //  |
-        }); //          message will be saved in -> req.flash('success')      |
-        // --> this user goes to passport.serializeUser()  <------------------
+        next(null, theUser, {
+          message: `Welcome back ${theUser.username}.`
+        });
       }
     );
 });

@@ -76,19 +76,10 @@ router.post('/trips/new',
           theTrip.something= req.body.tripSomething;
 
 
-          //
-          // if (req.files === '' ) {
-          // res.render('trips/new-trip-view.ejs', {
-          // layout: 'layouts/profile-layout.ejs',
-          // errorMessage: 'Please provide both username and password.'
-          // });
-          // return;
-          // }
 console.log('==============');
 console.log(req.files);
 console.log('==============');
 console.log( req.files.tripPhoto);
-
 
 
           if (req.files.tripPhoto) {

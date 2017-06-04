@@ -33,9 +33,8 @@ authRoutes.post('/signup',
 
   //don't let user register if the username is taken
       if (foundUser){
-        res.render('index.ejs',{  //usualy here we render 'signup-view.ejs' but since i don't have it i wanted to redirect to homepage and display message that username is already taken
-          errorMessage:'Username is taken, sir or madam.'
-        });
+        res.redirect('/'
+        );
         return;
       }
 // we are good to go, time to save the user.
@@ -72,7 +71,7 @@ authRoutes.post('/signup',
           // 'successfulSignup', ---> no need for this so we dont have to make duplicates on our home page
           'success',
           //2nd arg --> the actual message
-          'You have registered successfully!'
+          'Welocome! You have registered successfully.'
         );
         //redirect to homepage if save is successful
         res.redirect('/');
@@ -107,7 +106,7 @@ authRoutes.post('/login',                     //  |
 authRoutes.get('/logout', (req, res, next)=>{
     //req.logout()--> method provided by Passport
   req.logout();
-  req.flash('success', 'You have logged out successfully 😎');
+  req.flash('success', 'Thank you and happy travelling! We are waiting for new stories!');
   res.redirect('/');
 });
                                                         //facebook as in 'FbStrategy'
@@ -121,7 +120,7 @@ authRoutes.get('/auth/facebook',passport.authenticate('facebook'));
                       // |
 authRoutes.get('/auth/facebook/callback', passport.authenticate('facebook',{
   successRedirect: '/',
-  failureRedirect:'/login'
+  failureRedirect:'/'
 }));
 
 
@@ -132,7 +131,7 @@ authRoutes.get('/auth/google', passport.authenticate('google',{
 }));
 authRoutes.get('/auth/google/callback', passport.authenticate('google',{
   successRedirect: '/',
-  failureRedirect:'/login'
+  failureRedirect:'/'
 }));
 
 module.exports = authRoutes;

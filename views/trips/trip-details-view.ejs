@@ -5,7 +5,6 @@
   <div class="container wow fadeInUp">
     <div class="row">
       <div class="col-md-12">
-        <h3 class="section-title">Testimonials</h3>
         <div class="section-title-divider"></div>
         <p class="section-description">Erdo lide, nora porodo filece, salvam esse se, quod concedimus ses haec dicturum fuisse</p>
       </div>
@@ -21,7 +20,7 @@
       <div class="col-md-8">
         <div class="quote">
           <h5> Year: <%= trip.yearVisited %></h5>
-          <b><img src="/img/quote_sign_left.png" alt=""></b> <%= trip.description %> <small><img src="/img/quote_sign_right.png" alt=""></small>
+          <b><img src="/img/quote_sign_left.png" alt=""></b> <%= trip.tourAttractions %> <small><img src="/img/quote_sign_right.png" alt=""></small>
         </div>
       </div>
     </div>
@@ -34,31 +33,60 @@
 
 
 
-  <h3><%= trip.country %> , <%= trip.cityVisited %></h3>
-  <h5> Year: <%= trip.yearVisited %></h5>
+
   <p data-toggle="modal" data-target="#loginModal"><a href="#"> Details </a>.</p>
   <% } else { %>
 
+    <!-- proba -->
+    <section id="testimonials">
+    <div class="container wow fadeInUp">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="section-title">Random quote</h3>
+          <div class="section-title-divider"></div>
+        </div>
+      </div>
 
-          <h3><%= trip.country %> , <%= trip.cityVisited %></h3>
-          <h5> Year: <%= trip.yearVisited %></h5>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="profile">
+            <div class="picture"><img src="<%= trip.photoAddress[0] %>" alt=""></div>
+            <h4>This trip was to <%= trip.cityVisited %>, <%= trip.country %> </h4>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="quote">
+            <h5> Year: <%= trip.yearVisited %></h5>
+            <h5> I stayed: <%= trip.daysStayed %> </h5>
+            <h5> This trip I'll remember because... <%= trip.tripSomething %></h5>
+            <% if (trip.thingsSeen){ %>
+            <h5> Tourist attractions seen <%= trip.thingsSeen %></h5>
+            <% } %>
+            <b><img src="/img/quote_sign_left.png" alt=""></b> <%= trip.description %> <small><img src="/img/quote_sign_right.png" alt=""></small>
 
-          <h5> I stayed: <%= trip.daysStayed %> </h5>
-          <h5> This trip I'll remember because... <%= trip.tripSomething %></h5>
+          </div>
+        </div>
+      </div>
 
-          <h5> Description <%= trip.tripDescription %></h5>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="profile">
+      <% if (trip.photoAddress.length > 0){ %>
+        <p>My trip photos</p>
+          <% trip.photoAddress.forEach((photoAddress)=>{ %>
+            <div class="picture"><img class="pic" src="<%= photoAddress %>"></div>
+          <% }); %>
+      <%};%>
+    </div>
+  </div>
+</div>
+    </div>
+    </section>
 
-          <% if (trip.thingsSeen){ %>
-          <h5> Tourist attractions seen <%= trip.thingsSeen %></h5>
-          <% } %>
+
+    <!-- kraj probe -->
 
 
-          <p>My trip photos</p>
-          <%trip.photoAddress.forEach((photoAddress)=>{%>
-
-            <img class="pic" src="<%= photoAddress %>">
-
-          <%});%>
 
           <% } %>
 

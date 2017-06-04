@@ -260,3 +260,28 @@ background: rgba(255,255,255,0.6);
   margin-bottom: 5px;
   text-overflow: ellipsis;
 }
+
+.picDetail{
+  border: 6px solid #fff;
+  margin-bottom: 15px;
+  overflow: hidden;
+  height: 260px;
+  width: 260px;
+}
+
+.sucessMess{
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  color: #063f9b;
+  background-color: #ffffff;
+}
+
+.errorMess{
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  color: #cc5f49;
+  background-color: #ffffff ;
+}
