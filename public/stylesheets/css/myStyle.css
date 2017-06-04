@@ -285,3 +285,7 @@ background: rgba(255,255,255,0.6);
   color: #cc5f49;
   background-color: #ffffff ;
 }
+.centerForm{
+  margin-left: 30%;
+  width: 70%;
+  }

@@ -79,7 +79,6 @@ routerThingy.post('/profile',
         req.user.name = req.body.profileName;
         req.user.username = req.body.profileUsername;
         // dodato na osnovu forme koju popunjavaju da bi napravili profil
-        req.user.birthday = req.body.userBirthday;
         req.user.location = req.body.userCountry;
         req.user.profession = req.body.userProfession;
         req.user.email = req.body.userEmail;
@@ -148,48 +147,48 @@ if (req.body.pic === 'true') {
   }
 );
 
-routerThingy.get('/users', (req, res, next)=>{
-  if(req.user && req.user.role === 'admin'){
+// routerThingy.get('/users', (req, res, next)=>{
+//   if(req.user && req.user.role === 'admin'){
+//
+//   User.find((err, usersList)=>{
+//     if(err){
+//       next(err);
+//       return;
+//     }
+//
+//     res.render('user/users-list-view.ejs',{
+//       users:usersList,
+//       successMessage: req.flash('success')
+//     });
+//   });
+// }
+//
+//   else {
+//     next();
+//   }
+// });
 
-  User.find((err, usersList)=>{
-    if(err){
-      next(err);
-      return;
-    }
-
-    res.render('user/users-list-view.ejs',{
-      users:usersList,
-      successMessage: req.flash('success')
-    });
-  });
-}
-
-  else {
-    next();
-  }
-});
-
-routerThingy.post('/users/:id/admin', (req, res, next)=>{
-  if (req.user && req.user.role === 'admin'){
-
-  User.findByIdAndUpdate(
-    req.params.id,
-    {role:'admin'},
-    (err, theUser) => {
-      if(err){
-        next(err);
-        return;
-      }
-      req.flash('success', `User '${theUser.name}' is the admin now 😎`);
-      res.redirect('/users');
-    }
-  );
-  return;
-}
-  else{
-    next();
-  }
-});
+// routerThingy.post('/users/:id/admin', (req, res, next)=>{
+//   if (req.user && req.user.role === 'admin'){
+//
+//   User.findByIdAndUpdate(
+//     req.params.id,
+//     {role:'admin'},
+//     (err, theUser) => {
+//       if(err){
+//         next(err);
+//         return;
+//       }
+//       req.flash('success', `User '${theUser.name}' is the admin now 😎`);
+//       res.redirect('/users');
+//     }
+//   );
+//   return;
+// }
+//   else{
+//     next();
+//   }
+// });
 
 
 module.exports = routerThingy;

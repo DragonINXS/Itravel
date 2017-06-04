@@ -75,11 +75,6 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
         <td>Name:</td>
         <td><%= user.name %></td>
      </tr>
-
-     <tr>
-        <td>Birthday:</td>
-        <td><%= user.birthday %></td>
-    </tr>
     <tr>
         <td>Contury:</td>
         <td><%= user.location %></td>
@@ -135,7 +130,7 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
 
 </div><!--row close-->
 <br />
-<div class="row">
+<div class="row centerForm">
 
 <form class="form-horizontal main_form text-left" action="/profile" method="post"  id="edit_form" enctype="multipart/form-data">
 <fieldset>
@@ -154,10 +149,6 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
 
 <!-- ovo su dpdatna polja -->
 
-<label for="birthday-input"> Birth Year </label>
-<input  id="birthday-input" type="text"
-    name="userBirthday" value="<%= user.birthday %>">
-<br>
 <label for="userCountry"> Country </label>
 <input  id="userCountry" type="text"
     name="userCountry" value="<%= user.location %>">
@@ -178,12 +169,8 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
 <label for="userAbout">About me</label>
 <textarea id="userAbout" name="userAbout"> <%= user.about %> </textarea>
 
-
-
 <!-- ovdje zavrsavaju dodatna polja -->
-
-
-
+<br>
   <label for="current-password-input"> Current Password </label>
   <input  id="current-password-input" type="password"
       name="profileCurrentPassword">
@@ -201,20 +188,9 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
 <!-- upload profile picture -->
 
 <div class="form-group">
-        <label for="user-photo-input">Upload photo</label>
-        <input id="user-photo-input" type="file" name="userPhoto" class="form-control">
-      </div>
-<!-- <div class="col-md-12 text-left"> -->
-<!-- <div class="uplod-picture"> -->
-<!-- <span class="btn btn-default uplod-file"> -->
-    <!-- Upload Photo <input type="file" /> -->
-<!-- </span> -->
-<!-- <span class="btn btn-default uplod-file"> -->
-    <!-- Upload Video <input type="file" /> -->
-<!-- </span> -->
-<!-- </div><!--uplod-picture close--> -->
-<!-- </div><!--col-md-12 close--> -->
-<!-- Button -->
+  <label for="user-photo-input">Upload photo</label>
+  <input id="user-photo-input" type="file" name="userPhoto" class="form-control">
+</div>
 <div class="form-group col-md-10">
   <div class="col-md-6">
     <button type="button" id="submitbut" class="btn btn-warning submit-button">Save</button>
@@ -225,6 +201,7 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
 </fieldset>
 </form>
 </div><!--row close-->
+
 </div><!--container close -->
 </div><!--tab-pane close-->
 </div><!--tab-content close-->

@@ -49,7 +49,6 @@ authRoutes.post('/signup',
         theUser.name = req.body.signupName;
         theUser.username = req.body.signupUsername;
         theUser.encryptedPassword = hashPass;
-        theUser.birthday = req.body.userBirthday;
         theUser.location = req.body.userCountry;
         theUser.profession = req.body.userProfession;
         theUser.email = req.body.userEmail;
