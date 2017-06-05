@@ -19,36 +19,39 @@ Trip.aggregate([{$sample: {size:6}}],
     return;
     }
 
-
-    Trip.find(
-  { owner: req.user._id },
-  (err, tripsList) => {
-    if (err) {
-      next(err);
-      return;
-    }
-    res.render('index.ejs', {
-      user: req.user,
-      trips: tripsList,
-      successMessage: req.flash('success')
-    });
+  //
+  //   Trip.find(
+  // { owner: req.user._id },
+  // (err, tripsList) => {
+  //   if (err) {
+  //     next(err);
+  //     return;
+  //   }
+    // res.render('index.ejs', {
+    //   user: req.user,
+    //   trips: tripsList,
+    //   successMessage: req.flash('success')
+    // });
 //
 // if (foundTrips) {
 //   foundTrips.forEach((trip)=>{
 //     trip.owner.forEach((name)=>{
-//         <p> Name <%= name %></p>
+//
 //  });
 //   });
 //
 // }
+console.log('-------------');
+console.log(req.user);
 
     res.render('index.ejs',{
     successMessage:req.flash('success'),
     errorMessage: req.flash('error'),
     trips:foundTrips,
+    user:req.user
 
     });
-});
+// });
 });
   //render a completely different view for logged in users:
   // if(req.user){

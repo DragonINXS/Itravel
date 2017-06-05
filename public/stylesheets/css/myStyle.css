@@ -33,17 +33,17 @@ margin-bottom: 0;}
 
 /* edit profile css*/
 
-.hve-pro {    background-color:rgb(255, 102, 0);padding: 5px; width:100%; height:auto;float:left;}
+.hve-pro { background-color:#4d6791; padding: 5px; width:100%; height:auto; float:left;}
 .hve-pro p {float: left;color:#fff;font-size: 15px;text-transform: capitalize;padding: 5px 20px;font-family: 'Noto Sans', sans-serif;}
-h2.register { padding:10px 25px; text-transform:capitalize;font-size: 25px;color: rgb(255, 102, 0);}
-.fom-main { overflow:hidden;}
+h2.register { padding:10px 25px; text-transform:uppercase;;font-size: 25px;color: #4d6791;}
+/*.fom-main { overflow:hidden;}*/
 
 legend {font-family: 'Bitter', serif;color:#ff3200;border-bottom:0px solid;}
 .main_form {background-color: #;}
-label.control-label {font-family: 'Noto Sans', sans-serif;font-weight: 100; margin-bottom:5px !important;
-text-align:left !important; text-transform:uppercase; color:#798288;}
-.submit-button {color: #fff;background-color:rgb(255, 102, 0);width:190px;border: 0px solid;border-radius: 0px; transition:all ease 0.3s;margin: 5px;
-float:left;}
+label.control-label {font-family: 'Noto Sans', sans-serif;font-weight: 400; margin-bottom:5px !important;
+text-align:left !important; text-transform:uppercase; color:#4d6791;}
+.submit-button {color: #fff;background-color:#4d6791;width:140px;border: 0px solid;border-radius: 7%; transition:all ease 0.3s;margin: 5px;
+float:right;}
 .submit-button:hover, .submit-button:focus {color: #fff;background-color:rgb(0, 4, 51);}
 .hint_icon {color:#ff3200;}
 .form-control:focus {border-color: #ff3200;}
@@ -62,9 +62,9 @@ h4.pro-title { font-size:24px; color:rgba(0, 4, 51, 0.96); text-transform:capita
 .bio-table td {text-transform: capitalize;text-align: left;font-size: 15px;}
 .bio-table>tbody>tr>td { border:0px solid;text-transform: capitalize;color: rgb(0, 4, 51); font-size:15px;}
 .responsiv-table { border:0px solid;}
-/*.nav-menu li a {margin: 5px 5px 5px 5px;position: relative;display: block;padding: 10px 50px;border: 0px solid !important;box-shadow: none !important;*/
-background-color: rgb(0, 4, 51) !important;color: #fff !important;    white-space: nowrap;}
-/*.nav-menu li.active a {background-color: rgb(255, 102, 0) !important;}*/
+.nav-menu1 li a {margin: 5px 5px 5px 5px;position: relative;display: block;padding: 10px 50px;border: 0px solid !important;box-shadow: none !important;
+background-color: #4d6791 !important;color: #fff !important;    white-space: nowrap;}
+.nav-menu1 li.active a {background-color: #be9e21 !important;}
 .stick{position:fixed !important;top:0;z-index:999 !important;width:100%;background:#ffffff !important;height:auto; transition:all ease 0.8s;
 -webkit-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.75);
@@ -287,7 +287,7 @@ background: rgba(255,255,255,0.6);
   background-color: #ffffff ;
 }
 .centerForm{
-  margin-left: 15%;
+  margin-left: 5%;
   }
 .formLayout{
   margin-left: 5%;
@@ -295,7 +295,7 @@ background: rgba(255,255,255,0.6);
 
 .detailsPage{
   margin-left: 10%;
-  margin-top: 10%;
+  margin-top: 15%;
 }
 .seeDet{
   color: #063f9b;
@@ -312,12 +312,12 @@ background: rgba(255,255,255,0.6);
   text-decoration: none;
 }
 .socPos {
-  margin-left: 70px;
-  height: 40px;
+  margin-left: 100px;
+
 }
 #profPic{
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border-radius: 10%;
 }
 
@@ -326,3 +326,235 @@ background: rgba(255,255,255,0.6);
   top:100px;
   right: 50px;
 }
+
+#posButEditForm{
+  margin-left: 130px;
+}
+
+.aboutUser{
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.profSetup{
+  margin-left: 100px;
+}
+/*image modal*/
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.imgModal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.closeImgModal {
+    position: absolute;
+    top: 70px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
+/*footer*/
+
+footer .verybottom {
+	padding:30px 0 10px 0;
+}
+
+/* Align center */
+.aligncenter{
+	margin:0 auto;
+	text-align:center;
+}
+
+.aligncenter i {
+	text-align:center;
+}
+
+.aligncenter img, img.aligncenter{
+	margin-bottom:20px;
+}
+/* footer social icons */
+
+ul.social-network {
+	list-style: none;
+	display: inline;
+	margin-left:0 !important;
+	padding: 0;
+}
+ul.social-network li {
+	display: inline;
+	margin: 0 5px;
+}
+
+.social-network a.icoRss:hover {
+	background-color: #F56505;
+}
+.social-network a.icoFacebook:hover {
+	background-color:#3B5998;
+}
+.social-network a.icoTwitter:hover {
+	background-color:#33ccff;
+}
+.social-network a.icoGoogle:hover {
+	background-color:#BD3518;
+}
+.social-network a.icoVimeo:hover {
+	background-color:#0590B8;
+}
+.social-network a.icoLinkedin:hover {
+	background-color:#007bb7;
+}
+.social-network a.icoRss:hover i, .social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i,
+.social-network a.icoGoogle:hover i, .social-network a.icoVimeo:hover i, .social-network a.icoLinkedin:hover i {
+	color:#fff;
+}
+a.socialIcon:hover, .socialHoverClass {
+	color:#44BCDD;
+}
+
+.social-circle li a {
+	display:inline-block;
+	position:relative;
+	margin:0 auto 0 auto;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	border-radius:50%;
+	text-align:center;
+	width: 50px;
+	height: 50px;
+	font-size:20px;
+}
+.social-circle li i {
+	margin:0;
+	line-height:50px;
+	text-align: center;
+}
+
+.social-circle li a:hover i, .triggeredHover {
+	-moz-transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+	-ms--transform: rotate(360deg);
+	transform: rotate(360deg);
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	-ms-transition: all 0.2s;
+	transition: all 0.2s;
+}
+.social-circle i {
+	color: #fff;
+	-webkit-transition: all 0.8s;
+	-moz-transition: all 0.8s;
+	-o-transition: all 0.8s;
+	-ms-transition: all 0.8s;
+	transition: all 0.8s;
+}
+
+footer{
+	float:left;
+	width:100%;
+	background:#212121;
+	color:#fff;
+	margin:0;
+	padding:40px 0 0 0;
+}
+
+footer .verybottom {
+	padding:30px 0 10px 0;
+}
+
+/* /footer */
+
+
+
+.voffset  { margin-top: 2px; }
+.voffset1 { margin-top: 5px; }
+.voffset2 { margin-top: 10px; }
+.voffset3 { margin-top: 15px; }
+.voffset4 { margin-top: 30px; }
+.voffset5 { margin-top: 40px; }
+.voffset6 { margin-top: 60px; }
+.voffset7 { margin-top: 80px; }
+.voffset8 { margin-top: 100px; }
+.voffset9 { margin-top: 150px; }

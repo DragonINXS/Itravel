@@ -45,12 +45,13 @@
           <div class="section-title-divider"></div>
         </div>
       </div>
-      <div id="posBut">
-        <a href="/trips/<%= trip._id %>/edit">Edit</a>
-        <form action="/trips/<%= trip._id %>/delete" method="post">
-          <button class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i>Delete</button>
-        </form>
-      </div>
+        <div id="posBut" class="tripMenu">
+          <a href="/trips/<%= trip._id %>/edit">Edit</a>
+          <form action="/trips/<%= trip._id %>/delete" method="post">
+            <button class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i>Delete</button>
+          </form>
+        </div>
+
       <div class="row">
         <div class="col-md-4">
           <div class="profile">
@@ -73,26 +74,35 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-4">
-          <div class="profile">
-            <% if (trip.photoAddress.length > 0){ %>
-              <p>My trip photos</p>
-                <% trip.photoAddress.forEach((photoAddress)=>{ %>
-                  <div class="picture"><img class="pic" src="<%= photoAddress %>"></div>
-                <% }); %>
-            <%};%>
+      <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="profile">
+                <% if (trip.photoAddress.length > 0){ %>
+                  <p>My trip photos</p>
+                    <% trip.photoAddress.forEach((photoAddress)=>{ %>
+                      <div class="picture"><img id="myImg" class="pic" src="<%= photoAddress %>"></div>
+                    <% }); %>
+                <%};%>
+              </div>
+            </div>
           </div>
-        </div>
       </div>
     </div>
     </section>
 
     <!-- kraj probe -->
-
   <% } %>
 <p><a href="/trips">Back to My trips</a></p>
 
+</div>
+
+<!-- Image Modal -->
+<div id="imgModal" class="imgModal">
+  <span class="closeImgModal">&times;</span>
+    <br><br><br>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
 </div>
 
 
@@ -248,3 +258,25 @@
               	</div>
                 </div>
               </div>
+<script>
+// Get the modal
+var modal = document.getElementById('imgModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("closeImgModal")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+</script>

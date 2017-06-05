@@ -1,7 +1,7 @@
 <br><br>
 <br><br>
 
-<h2> Add a New Trip</h2>
+<!-- <h2> Add a New Trip</h2>
 
 <form id ="formnew" action="/trips/new" method="post" enctype="multipart/form-data">
   <label for="trip-country-input"> Country </label>
@@ -31,3 +31,54 @@
     <br>
   <button> Save Trip </button>
 </form>
+ -->
+
+
+
+<div class="container">
+    <form id ="formnew" action="/trips/new" method="post" enctype="multipart/form-data" class="well span8" role="form">
+        <div class="row">
+            <div class="col-md-4">
+
+              <div class="form-group">
+                <label for="trip-country-input"> Country </label>
+                <input  id="trip-country-input" type="text" name="tripCountry" placeholder="" required>
+            	 </div>
+
+            	<div class="form-group">
+                <label for="trip-city-input"> City </label>
+                <input  id="trip-city-input" type="text" name="tripCity" placeholder="" required>
+            	</div>
+
+				      <div class="form-group">
+	              <label for="trip-year-input"> Year </label>
+                <input  id="trip-year-input" type="number" name="tripYear" placeholder=""required>
+              </div>
+
+              <div class="form-group">
+                <label for="trip-days-input"> For how long:  </label>
+                <input  id="trip-days-input" type="text" name="tripDays" placeholder="" required>
+              </div>
+
+              <div class="form-group">
+                <label for="trip-something-input"> This trip I'll remember because... </label>
+                <textarea id="trip-something-input" name="tripSomething" placeholder="" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="trip-thingsSeen-input"> Things seen </label>
+                <textarea id="trip-thingsSeen-input" name="thingsSeen" placeholder=""></textarea>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+                <label for="trip-desc-input"> Description </label>
+                <textarea id="trip-desc-input" class="form-control" rows="10"name="tripDescription" placeholder="" required></textarea>
+
+                <label for="trip-photo-input"> Upload Photo </label>
+                <input id="trip-photo-input" type="file" name="tripPhoto" multiple="" value="">
+                  <br>
+                <button class="btn btn-primary pull-right voffset3"> Save Trip </button>
+           	</div>
+        </div>
+    </form>
+</div>

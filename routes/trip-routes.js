@@ -81,6 +81,8 @@ console.log('==============');
 console.log(req.files);
 console.log('==============');
 console.log( req.files.tripPhoto);
+console.log('==============');
+
 
 
           if (req.files.tripPhoto) {
@@ -134,7 +136,6 @@ router.get('/trips/:id/edit',(req, res, next)=>{
 //ACTUAL UPDATE
 router.post('/trips/:id', (req, res, next)=>{
   const tripId = req.params.id;
-  console.log(req.body.tripCountry);
   const tripChanges = {
     owner: req.user._id,
     country:req.body.tripCountry,
@@ -154,7 +155,8 @@ router.post('/trips/:id', (req, res, next)=>{
         next(err);
         return;
       }
-
+console.log('User id:'+req.user._id);
+console.log("user"+req.user);
       //this is how you would redirect to the product details page
       // res.redirect(`/products/${productId}`);
       res.redirect(`/trips/${tripId}`);
