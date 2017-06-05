@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const Trip    = require('../models/trip-model.js');
+const User = require('../models/user-model.js');
 /* GET home page. */
 router.get('/', (req, res, next) => {
   //
@@ -17,6 +18,20 @@ Trip.aggregate([{$sample: {size:6}}],
     next(err);
     return;
     }
+
+
+    Trip.find(
+  { owner: req.user._id },
+  (err, tripsList) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    res.render('index.ejs', {
+      user: req.user,
+      trips: tripsList,
+      successMessage: req.flash('success')
+    });
 //
 // if (foundTrips) {
 //   foundTrips.forEach((trip)=>{
@@ -30,9 +45,10 @@ Trip.aggregate([{$sample: {size:6}}],
     res.render('index.ejs',{
     successMessage:req.flash('success'),
     errorMessage: req.flash('error'),
-    trips:foundTrips
-    });
+    trips:foundTrips,
 
+    });
+});
 });
   //render a completely different view for logged in users:
   // if(req.user){

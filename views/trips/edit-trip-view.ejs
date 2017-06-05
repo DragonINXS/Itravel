@@ -20,7 +20,7 @@
   <textarea id="trip-note-input" name="tripNote"> <%= trip.tripNote %> </textarea>
     <br>
   <label for="trip-something-input"> This trip I'll remember because... </label>
-  <textarea id="trip-something-input" name="tripSomething"> <%= trip.tripSomething %> </textarea>
+  <textarea id="trip-something-input" name="tripSomething"> <%= trip.something %> </textarea>
     <br>
   <label for="trip-desc-input"> Description </label>
   <textarea id="trip-desc-input" name="tripDescription"> <%= trip.description %> </textarea>
@@ -31,4 +31,5 @@
 
 
   <button type="submit"> Save Changes </button>
+  <button type="button" class="btn btn-danger"><a href="/trips">Cancel </a></button>
 </form>

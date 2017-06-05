@@ -27,7 +27,10 @@
             <div class="col-sm-9">
               <h3><%= oneTrip.country %> , <%= oneTrip.cityVisited %></h3>
               <h5> Visited: <%= oneTrip.yearVisited %></h5>
-              <h5>Note:
+              <% if (oneTrip.tripNote){ %>
+              <h5>Note: <%= oneTrip.tripNote %></h5>
+              <% } %>
+              <h5>Add/change note:
                 <form action="/trips/<%= oneTrip._id %>/note" method="post" class="form-inline" role="form">
                   <div class="form-group">
                       <input class="form-control" type="text" name="tripNote" placeholder="Your comments" />

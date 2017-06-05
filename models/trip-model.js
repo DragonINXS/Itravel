@@ -15,12 +15,9 @@ const tripSchema = new Schema(
     tripNote:{ type: String},
     // photoAddress: {type: String, default: '/img/defaultTrip.jpg'},
     //reference the ID og the user
+    traveller: [ User.schema],
     owner: {type: Schema.Types.ObjectId },
-    postType: {
-      type: String,
-      enum: ['public', 'private'],
-      default: 'public'
-      },
+    
     // user as a subdocument
     // owner: {type: User.Schema}
 

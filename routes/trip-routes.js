@@ -143,6 +143,7 @@ router.post('/trips/:id', (req, res, next)=>{
     daysStayed: req.body.tripDays,
     tourAttractions: req.body.thingsSeen,
     description: req.body.tripDescription,
+    something: req.body.tripSomething,
     tripNote: req.body.tripNote
   };
   Trip.findByIdAndUpdate(
