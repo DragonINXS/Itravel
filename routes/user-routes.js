@@ -114,81 +114,18 @@ if (req.body.pic === 'true') {
       return;
     }
 
-    req.flash('success', 'Changes saved. 👻');
+    // req.flash('success', 'Changes saved. 👻');
 
     res.redirect('/profile');
-  });
+    });
+  }
 
-}
-
-
-
-        // if both passwords are filled and the current password is correct
-
-        // save updates!
-
-
-        // User.findByIdAndUpdate(
-        //   req.user._id,
-        //   profileChanges,
-        //   (err, theUser) => {
-        //     if (err) {
-        //       next(err);
-        //       return;
-        //     }
-        //
-        //     req.flash('success', 'Changes saved. 👻');
-        //
-        //     res.redirect('/profile/edit');
-        //   }
-        // );
       }
     );
   }
 );
 
-// routerThingy.get('/users', (req, res, next)=>{
-//   if(req.user && req.user.role === 'admin'){
-//
-//   User.find((err, usersList)=>{
-//     if(err){
-//       next(err);
-//       return;
-//     }
-//
-//     res.render('user/users-list-view.ejs',{
-//       users:usersList,
-//       successMessage: req.flash('success')
-//     });
-//   });
-// }
-//
-//   else {
-//     next();
-//   }
-// });
 
-// routerThingy.post('/users/:id/admin', (req, res, next)=>{
-//   if (req.user && req.user.role === 'admin'){
-//
-//   User.findByIdAndUpdate(
-//     req.params.id,
-//     {role:'admin'},
-//     (err, theUser) => {
-//       if(err){
-//         next(err);
-//         return;
-//       }
-//       req.flash('success', `User '${theUser.name}' is the admin now 😎`);
-//       res.redirect('/users');
-//     }
-//   );
-//   return;
-// }
-//   else{
-//     next();
-//   }
-// });
 
 
 module.exports = routerThingy;

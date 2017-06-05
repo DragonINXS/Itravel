@@ -91,8 +91,8 @@
                   <li data-toggle="modal" data-target="#signupModal"><a> Sign Up</a> </li>
                   <li data-toggle="modal" data-target="#loginModal"><a> Log In </a></li>
                 <% } %>
-                <li class=""><a href="#feature">About</a></li>
-                <li class=""><a href="#contact">Contact Us</a></li>
+                <!-- <li class=""><a href="#feature">About</a></li> -->
+                <!-- <li class=""><a href="#contact">Contact Us</a></li> -->
                 <li><a href="#randomPosts" data-toggle="modal" data-target="#searchModal"><span class="glyphicon glyphicon-search"></span> Search</a></li>
 
               </ul>
@@ -179,7 +179,7 @@
           <form method="post" action="/signup" class="form-horizontal" >
 
                 <div class="form-group">
-                    <label for="name-input" class="cols-sm-2 control-label"><span class="red">*</span> Your Name </label>
+                    <label for="name-input" class="cols-sm-2 control-label"><span class="red">*</span> Name and last name </label>
                       <div class="cols-sm-10">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -190,7 +190,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="username-input" class="cols-sm-2 control-label"> Account Name </label>
+                    <label for="username-input" class="cols-sm-2 control-label"><span class="red">*</span>Username </label>
                     <div class="cols-sm-10">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
@@ -198,11 +198,29 @@
                       </div>
                     </div>
                   </div>
+                  <div class="form-group">
+                    <label for="country-input" class="cols-sm-2 control-label"><span class="red">*</span>Country </label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                          <input id="country-input" type="text" name="userCountry" class="form-control" placeholder="Enter your username" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="email-input" class="cols-sm-2 control-label"><span class="red">*</span>Email </label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                          <input id="email-input" type="email" name="userEmail" class="form-control" placeholder="Enter your username" required>
+                      </div>
+                    </div>
+                  </div>
 
                   <!-- OVDJE DODATNA POLJA ZAVRSAVAJU -->
 
                   <div class="form-group">
-                    <label for="password-input" class="cols-sm-2 control-label"> Password </label>
+                    <label for="password-input" class="cols-sm-2 control-label"><span class="red">*</span> Password </label>
                     <div class="cols-sm-10">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
@@ -211,7 +229,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="password-input" class="cols-sm-2 control-label"> Confirm your password </label>
+                    <label for="password-input" class="cols-sm-2 control-label"><span class="red">*</span>Confirm your password </label>
                     <div class="cols-sm-10">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
@@ -300,8 +318,8 @@
     	</div>
       </div>
     </div>
-    <div class="container">
 
+    <div class="container">
 
       <!-- Modal -->
       <div class="modal fade" id="searchModal" role="dialog">

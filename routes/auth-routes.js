@@ -33,8 +33,8 @@ authRoutes.post('/signup',
 
   //don't let user register if the username is taken
       if (foundUser){
-        res.redirect('/'
-        );
+        req.flash('error', 'Username taken! Please choose a different one.');
+        res.redirect('/');
         return;
       }
 // we are good to go, time to save the user.

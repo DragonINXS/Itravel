@@ -240,15 +240,16 @@ background: rgba(255,255,255,0.6);
   border: 6px solid #fff;
   margin-bottom: 15px;
   overflow: hidden;
-  height: 260px;
-  width: 260px;
+  height: 200px;
+  width: 350px;
+  margin-right: 20px;
 }
 
 #testimonials .profile .picture img {
   max-width: 100%;
 }
 
-#testimonials .profile h4 {
+#testimonials .profile p {
   font-weight: normal;
   color: #03C4EB;
   margin-bottom: 5px;
@@ -286,6 +287,41 @@ background: rgba(255,255,255,0.6);
   background-color: #ffffff ;
 }
 .centerForm{
-  margin-left: 30%;
-  width: 70%;
+  margin-left: 15%;
   }
+.formLayout{
+  margin-left: 5%;
+}
+
+.detailsPage{
+  margin-left: 10%;
+  margin-top: 10%;
+}
+.seeDet{
+  color: #063f9b;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Raleway';
+}
+
+.tripMenu a {
+  color: #063f9b;
+  font-size: 16px;
+  font-family: 'Raleway';
+  font-weight: bold;
+  text-decoration: none;
+}
+.socPos {
+  margin-left: 70px;
+  height: 40px;
+}
+#profPic{
+  width: 250px;
+  height: 250px;
+}
+
+#posBut{
+  position:absolute;
+  top:100px;
+  right: 50px;
+}

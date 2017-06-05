@@ -74,6 +74,7 @@ router.post('/trips/new',
           theTrip.tourAttractions= req.body.thingsSeen;
           theTrip.description= req.body.tripDescription;
           theTrip.something= req.body.tripSomething;
+          theTrip.tripNote = req.body.tripNote;
 
 
 console.log('==============');
@@ -123,7 +124,8 @@ router.get('/trips/:id/edit',(req, res, next)=>{
       return;
     }
     res.render('trips/edit-trip-view.ejs',{
-      trip: theTrip
+      trip: theTrip,
+      layout: 'layouts/profile-layout.ejs'
     });
   });
 });
@@ -141,7 +143,7 @@ router.post('/trips/:id', (req, res, next)=>{
     daysStayed: req.body.tripDays,
     tourAttractions: req.body.thingsSeen,
     description: req.body.tripDescription,
-
+    tripNote: req.body.tripNote
   };
   Trip.findByIdAndUpdate(
     tripId,
@@ -170,6 +172,30 @@ router.post('/trips/:id/delete', (req, res, next)=>{
     res.redirect('/trips');
   });
 });
+
+//note
+
+router.post('/trips/:id/note', (req, res, next)=>{
+  const tripId = req.params.id;
+  const tripChanges1 = {
+    tripNote: req.body.tripNote
+  };
+  Trip.findByIdAndUpdate(
+    tripId,
+    tripChanges1,
+    (err, theTrip) =>{
+      if (err){
+        next(err);
+        return;
+      }
+
+      //this is how you would redirect to the product details page
+      // res.redirect(`/products/${productId}`);
+      res.redirect('/trips');
+    }
+  );
+});
+
 
 //SEARCH
 router.get('/search',(req, res, next)=>{

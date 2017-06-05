@@ -1,3 +1,5 @@
+<div class="detailsPage">
+
 <%if(typeof user === "undefined"){%>
 
   <!-- proba -->
@@ -6,7 +8,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="section-title-divider"></div>
-        <p class="section-description">Erdo lide, nora porodo filece, salvam esse se, quod concedimus ses haec dicturum fuisse</p>
+        <p class="section-description">SOME QUOTE HERE</p>
       </div>
     </div>
 
@@ -14,7 +16,9 @@
       <div class="col-md-4">
         <div class="profile">
           <div class="picture"><img src="<%= trip.photoAddress %>" alt=""></div>
-          <h4>Traveller <span class="travName">TRAVELLER'S NAME</span> was in <%= trip.cityVisited %>, <%= trip.country %> </h4>
+          <div class="">
+            <p>Traveller <span class="travName">TRAVELLER'S NAME: <%= trip.owner %></span> was in <%= trip.cityVisited %>, <%= trip.country %> </p>
+          </div>
         </div>
       </div>
       <div class="col-md-8">
@@ -28,13 +32,8 @@
   </div>
   </section>
   <!-- kraj probe -->
-
-
-
-
-
-
-  <p data-toggle="modal" data-target="#loginModal"><a href="#"> Details </a>.</p>
+  <br>
+  <div data-toggle="modal" data-target="#loginModal"><a href="#"><span class="seeDet">See more details... </span></a></div>
   <% } else { %>
 
     <!-- proba -->
@@ -46,12 +45,18 @@
           <div class="section-title-divider"></div>
         </div>
       </div>
-
+      <div id="posBut">
+        <a href="/trips/<%= trip._id %>/edit">Edit</a>
+        <form action="/trips/<%= trip._id %>/delete" method="post">
+          <button class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i>Delete</button>
+        </form>
+      </div>
       <div class="row">
         <div class="col-md-4">
           <div class="profile">
             <div class="picture"><img src="<%= trip.photoAddress[0] %>" alt=""></div>
-            <h4>This trip was to <%= trip.cityVisited %>, <%= trip.country %> </h4>
+            <p>This trip was to <%= trip.cityVisited %>, <%= trip.country %> </p>
+            <div>Note: <%= trip.tripNote %></div>
           </div>
         </div>
         <div class="col-md-8">
@@ -71,24 +76,24 @@
       <div class="row">
         <div class="col-md-4">
           <div class="profile">
-      <% if (trip.photoAddress.length > 0){ %>
-        <p>My trip photos</p>
-          <% trip.photoAddress.forEach((photoAddress)=>{ %>
-            <div class="picture"><img class="pic" src="<%= photoAddress %>"></div>
-          <% }); %>
-      <%};%>
-    </div>
-  </div>
-</div>
+            <% if (trip.photoAddress.length > 0){ %>
+              <p>My trip photos</p>
+                <% trip.photoAddress.forEach((photoAddress)=>{ %>
+                  <div class="picture"><img class="pic" src="<%= photoAddress %>"></div>
+                <% }); %>
+            <%};%>
+          </div>
+        </div>
+      </div>
     </div>
     </section>
 
-
     <!-- kraj probe -->
 
+  <% } %>
 
 
-          <% } %>
+</div>
 
 
           <!-- login modal -->
@@ -128,11 +133,6 @@
 
               </form>
               <br>
-              <!-- <a href="/auth/facebook"> Log in with Facebook </a>
-              <br>
-
-              <a href="/auth/google"> Log in with Google </a>
-              <br> -->
               <div class="row text-center sign-with">
                   <div class="col-md-12">
                       <h3>Sign in with</h3>
@@ -160,3 +160,91 @@
             </div>
             </div>
           </div>
+
+
+          <!-- signup modal -->
+              <div class="modal" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+              	<div class="modal-content">
+              		<div class="modal-header">
+              			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+              			<h3 class="modal-title" id="lineModalLabel">Sign up to iTraveller</h3>
+              		</div>
+              		<div class="modal-body main-center">
+                    <form method="post" action="/signup" class="form-horizontal" >
+
+                          <div class="form-group">
+                              <label for="name-input" class="cols-sm-2 control-label"><span class="red">*</span> Name and last name </label>
+                                <div class="cols-sm-10">
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                      <input id="name-input" type="text" name="signupName" class="form-control" placeholder="Enter your name" required>
+                                        <br>
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="username-input" class="cols-sm-2 control-label"><span class="red">*</span>Username </label>
+                              <div class="cols-sm-10">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                    <input id="username-input" type="text" name="signupUsername" class="form-control" placeholder="Enter your username" required>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="country-input" class="cols-sm-2 control-label"><span class="red">*</span>Country </label>
+                              <div class="cols-sm-10">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                    <input id="country-input" type="text" name="userCountry" class="form-control" placeholder="Enter your username" required>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="email-input" class="cols-sm-2 control-label"><span class="red">*</span>Email </label>
+                              <div class="cols-sm-10">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                    <input id="email-input" type="email" name="userEmail" class="form-control" placeholder="Enter your username" required>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- OVDJE DODATNA POLJA ZAVRSAVAJU -->
+
+                            <div class="form-group">
+                              <label for="password-input" class="cols-sm-2 control-label"><span class="red">*</span> Password </label>
+                              <div class="cols-sm-10">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input id="password-input" type="password" name="signupPassword" class="form-control"  placeholder="Enter your Password" required>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="password-input" class="cols-sm-2 control-label"><span class="red">*</span>Confirm your password </label>
+                              <div class="cols-sm-10">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input id="password-input" type="password" name="signupPassword1" class="form-control"  placeholder="Enter your Password" required>
+                                </div>
+                              </div>
+                            </div>
+                            <br><br>
+                            <button type="submit" class="btn btn-primary btn-md btn-block">Sign up</button>
+
+                  </form>
+
+              		</div>
+              		<div class="modal-footer">
+              			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
+              				<div class="btn-group" role="group">
+              					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+              				</div>
+              			</div>
+              		</div>
+              	</div>
+                </div>
+              </div>

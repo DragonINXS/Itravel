@@ -16,6 +16,9 @@
   <label for="trip-days-input"> For how long:  </label>
   <input  id="trip-days-input" type="number" name="tripDays" value="<%= trip.daysStayed %>">
     <br>
+  <label for="trip-note-input"> Note: </label>
+  <textarea id="trip-note-input" name="tripNote"> <%= trip.tripNote %> </textarea>
+    <br>
   <label for="trip-something-input"> This trip I'll remember because... </label>
   <textarea id="trip-something-input" name="tripSomething"> <%= trip.tripSomething %> </textarea>
     <br>

@@ -12,7 +12,7 @@ const tripSchema = new Schema(
     description: {type: String},
     something: { type: String },
     photoAddress: [String],
-
+    tripNote:{ type: String},
     // photoAddress: {type: String, default: '/img/defaultTrip.jpg'},
     //reference the ID og the user
     owner: {type: Schema.Types.ObjectId },

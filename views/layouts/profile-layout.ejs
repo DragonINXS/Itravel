@@ -37,15 +37,16 @@
 
 
                 <% if (typeof user !== "undefined"){ %>
-                  <li><a href="trips"> My Trips </a></li>
+                  <li><a href="/profile"> My Profile </a></li>
+                  <li><a href="/trips"> My Trips </a></li>
                   <li><a href="/logout"> Log Out </a></li>
                   <% } else { %>
                     <li data-toggle="modal" data-target="#signupModal"><a href="#"> Sign Up</a> </li>
                     <li data-toggle="modal" data-target="#loginModal"><a href="#"> Log In </a></li>
                   <% } %>
-                <li class=""><a href="#feature">About</a></li>
-                <li class=""><a href="#contact">Contact Us</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+                <!-- <li class=""><a href="#feature">About</a></li> -->
+                <!-- <li class=""><a href="#contact">Contact Us</a></li> -->
+                <li><a href="#" data-toggle="modal" data-target="#searchModal"><span class="glyphicon glyphicon-search"></span> Search</a></li>
               </ul>
             </div>
           </div>
@@ -58,7 +59,56 @@
   </head>
   <body>
 
+
+
+
+
+
+
   <%- body %>
+
+
+
+
+  <div class="container">
+
+    <!-- Modal -->
+    <div class="modal fade" id="searchModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h4 class="modal-title">Search Section</h4>
+          </div>
+          <div class="modal-body">
+            <section class="search-box1" id="panel">
+              <div class="container">
+                <form method="get" action="/search" class="form-inline" role="form"  >
+                  <div class="col-sm-8 col-xs-8 form-group top_search" style="padding-right:0px;">
+                    <div class="row">
+                      <label class="sr-only" for="search-term-input">Search here...</label>
+                      <span class="serach-footer"><img class="srch" src="./img/srch.png" /></span>
+                      <input id="search-term-input" type="search" class="form-control search-wrap" name="tripSearchTerm" placeholder="Search here...">
+                      <button type="submit" class="btn btn-default search-btn">SEARCH</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
 
   <script src="/js/jquery.min.js"></script>
   <script src="/js/jquery.easing.min.js"></script>

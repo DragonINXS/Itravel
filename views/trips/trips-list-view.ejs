@@ -1,21 +1,19 @@
-<script src="/js/custom.js"></script>
-
-
 <div class="pos">
-<% if(trips.length === 0){ %>
-  <h2> You don't have trips yet</h2>
-  <a href="/trips/new">
-    Create a trip
-  </a>
-<% }  else { %>
-  <a href="/trips/new">
-    Create a trip
-  </a>
-  <h2 class="trips-header"> Your Trips </h2>
+  <% if(trips.length === 0){ %>
+    <h2> You don't have trips yet</h2>
+    <a href="/trips/new">
+      Create a trip
+    </a>
+  <% }  else { %>
+    <a href="/trips/new">
+      Create a trip
+    </a>
+    <h2 class="trips-header"> Your Trips </h2>
 
-  <% if(successMessage.length > 0){ %>
-    <div class="success"> <%= successMessage %> </div>
-  <% } %>
+    <% if(successMessage.length > 0){ %>
+      <div class="success"> <%= successMessage %> </div>
+    <% } %>
+
 
     <ul>
       <% trips.forEach((oneTrip)=>{ %>
@@ -28,13 +26,45 @@
 
             <div class="col-sm-9">
               <h3><%= oneTrip.country %> , <%= oneTrip.cityVisited %></h3>
-              <h5> <%= oneTrip.yearVisited %></h5>
+              <h5> Visited: <%= oneTrip.yearVisited %></h5>
+              <h5>Note:
+                <form action="/trips/<%= oneTrip._id %>/note" method="post" class="form-inline" role="form">
+                  <div class="form-group">
+                      <input class="form-control" type="text" name="tripNote" placeholder="Your comments" />
+                  </div>
+                  <div class="form-group">
+                      <button class="btn btn-default">Add</button>
+                  </div>
+                </form>
+              </h5>
               <br>
-              <a href="/trips/<%= oneTrip._id %>">See details</a>
-              <a href="/trips/<%= oneTrip._id %>/edit ">Edit</a>
-              <form action="/trips/<%= oneTrip._id %>/delete" method="post">
-                <button >Delete</button>
-              </form>
+              <p class="tripMenu">
+                <a href="/trips/<%= oneTrip._id %>">See details</a>
+                <a href="/trips/<%= oneTrip._id %>/edit">Edit</a>
+                <div>
+                <form action="/trips/<%= oneTrip._id %>/delete" method="post">
+                  <button class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i>Delete</button>
+                </form>
+              </div>
+              </p>
+              <!-- try -->
+              <!-- Small modal -->
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#trip">Trip menu</button>
+
+                <div id="trip" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content tripModal">
+                      <p ><a href="/trips/<%= oneTrip._id %>">See details</a>
+                      <a href="/trips/<%= oneTrip._id %>/edit">Edit</a>
+                      <form style="display:inline" action="/trips/<%= oneTrip._id %>/delete" method="post">
+                        <button class="btn btn-warning">Delete</button>
+                      </form>
+                    </p>
+                    </div>
+                  </div>
+                </div> -->
+              <!-- /try -->
+
             </div>
           </div>
 
@@ -48,3 +78,6 @@
 <a href="/trips/new"> Create a Trip </a>
 <% } %>
 </div>
+
+
+<script src="/js/custom.js"></script>

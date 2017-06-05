@@ -177,9 +177,7 @@ passport.use(new LocalStrategy(
         theUser.save((err, theUser)=>{
 
         //null means login didn't fail
-        next(null, theUser, {
-          message: `Welcome back ${theUser.username}.`
-        });
+        next(null, theUser);
       }
     );
 });
