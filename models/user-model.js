@@ -17,7 +17,6 @@ const userSchema = new Schema(
     encryptedPassword: { type: String },
     social: { type: String},
     favPlace: { type: String },
-    trips: [{type: Schema.Types.ObjectId }],
     //login with facebook users
     facebookID: { type: String },
 

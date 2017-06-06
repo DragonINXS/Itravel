@@ -99,7 +99,7 @@ routerThingy.post('/profile',
               return;
             }
 
-    req.flash('success', 'Changes saved.');
+    // req.flash('success', 'Changes saved.');
 
     res.redirect('/profile');
   });
@@ -114,7 +114,7 @@ if (req.body.pic === 'true') {
       return;
     }
 
-    req.flash('success', 'Changes saved.');
+    // req.flash('success', 'Changes saved.');
 
     res.redirect('/profile');
   });

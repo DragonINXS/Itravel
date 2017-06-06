@@ -1,21 +1,23 @@
-
 <section id="randomPosts" class="section-padding wow fadeInUp delay-05s">
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
         <h2 class="service-title pad-bt15">The world is yours!</h2>
-        <p class="sub-title pad-bt15"> “Travel makes one modest. You see what a tiny place you occupy in the world.” <br>Gustave Flaubert</p>
+        <hr>
+        <p class="sub-title pad-bt15" style="font-size:22px;font-weight:bold;"> “Travel makes one modest. You see what a tiny place you occupy in the world.” <br>Gustave Flaubert</p>
         <hr class="bottom-line">
       </div>
       <%if(typeof user === "undefined"){%>
-        <%trips.forEach((oneTrip)=>{%>
+        <%trips.forEach((oneTrip, index)=>{%>
           <a href="/trips/<%= oneTrip._id %>">
       <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
         <figure>
           <img src="<%=oneTrip.photoAddress%>" class="img-responsive pic">
           <figcaption>
               <h2><%= oneTrip.country %></h2>
-              <p class="center"><%= oneTrip.owner %></p>
+            <p class="center"><%= ownersNames[index] %></p>
+            <!-- <img src="<%= ownersPictures[index] %>" alt=""> -->
+
               <span><%= oneTrip.something %></span>
           </figcaption>
         </figure>
@@ -23,14 +25,14 @@
       </a>
       <%});%>
       <%} else {%>
-        <%trips.forEach((oneTrip)=>{%>
+        <%trips.forEach((oneTrip, index)=>{%>
           <a href="/trips/<%= oneTrip._id %>">
       <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
         <figure>
           <img src="<%=oneTrip.photoAddress%>" class="img-responsive pic">
           <figcaption>
               <h2><%= oneTrip.country %></h2>
-              <p class="center"><%= oneTrip.owner %></p>
+              <p class="center"><%= ownersNames[index] %></p>
               <span><%= oneTrip.something %></span>
           </figcaption>
         </figure>
@@ -48,7 +50,7 @@
     <div class="row">
       <div class="col-md-12 text-center">
         <h2 class="service-title pad-bt15">EXPLORE THIS LOVELY WORLD!</h2>
-        <p class="sub-title pad-bt15" style="color:#be9e21"><strong><i>Of all the books in the world, the best storries are found<br>between a pages of a passport.</i></strong></p>
+        <p class="sub-title pad-bt15" style="color:#be9e21;"><strong><i>Of all the books in the world, the best storries are found<br>between a pages of a passport.</i></strong></p>
         <hr class="bottom-line">
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12">

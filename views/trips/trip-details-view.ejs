@@ -8,7 +8,10 @@
     <div class="row">
       <div class="col-md-12">
         <div class="section-title-divider"></div>
-        <p class="section-description">SOME QUOTE HERE</p>
+        <p class="section-description">
+          <div id="MyQuote">
+              Quote
+          </div></p>
       </div>
     </div>
 
@@ -45,12 +48,15 @@
           <div class="section-title-divider"></div>
         </div>
       </div>
+
+      <% if(user._id.equals(trip.owner)){ %>
         <div id="posBut" class="tripMenu">
           <a href="/trips/<%= trip._id %>/edit">Edit</a>
           <form action="/trips/<%= trip._id %>/delete" method="post">
             <button class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i>Delete</button>
           </form>
         </div>
+        <% } %>
 
       <div class="row">
         <div class="col-md-4">
@@ -81,7 +87,7 @@
                 <% if (trip.photoAddress.length > 0){ %>
                   <p>My trip photos</p>
                     <% trip.photoAddress.forEach((photoAddress)=>{ %>
-                      <div class="picture"><img id="myImg" class="pic" src="<%= photoAddress %>"></div>
+                      <div class="picture"><img class="myImg" class="pic" src="<%= photoAddress %>"></div>
                     <% }); %>
                 <%};%>
               </div>
@@ -263,14 +269,21 @@
 var modal = document.getElementById('imgModal');
 
 // Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById('myImg');
+var img = document.getElementsByClassName('myImg');
 var modalImg = document.getElementById("img01");
 var captionText = document.getElementById("caption");
-img.onclick = function(){
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
+for(var i =0; i<img.length; i++){
+
+  img[i].onclick = function(){
+    console.log("Wooow")
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      modal.modal();
+  }
+
 }
+
+
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("closeImgModal")[0];

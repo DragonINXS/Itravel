@@ -17,6 +17,9 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/css/animate.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/css/myStyle.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
     <!-- =======================================================
         Theme Name: Baker
         Theme URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
@@ -28,10 +31,8 @@
 
     <!-- flash messages -->
 
-
     <% if (typeof successMessage !== "undefined"){ %>
       <% if (successMessage.length > 0) { %>
-
         <div id="myModal" class="modal fade">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -42,10 +43,8 @@
             </div>
           </div>
         </div>
-
       <% } %>
     <% } %>
-<!-- messages end here -->
 
     <% if (typeof errorMessage !== "undefined"){ %>
       <% if (errorMessage.length > 0) { %>
@@ -61,15 +60,15 @@
         </div>
       <% } %>
     <% } %>
-
+<!-- messages end here -->
 
     <div class="loader"></div>
-    <div >
+    <div id="myDiv">
     <!--HEADER-->
     <div class="header">
       <div class="bg-color">
         <header id="main-header">
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top" style="margin-top:-20px; background-color:#3d4b60;">
           <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -77,9 +76,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              <br>
               <a class="navbar-brand" href="#">i<span class="logo-dec">traveller</span></a>
             </div>
             <div class="collapse navbar-collapse nav-menu-container" id="myNavbar">
+              <br>
               <ul class="nav navbar-nav navbar-right nav-menu">
                 <li class="active"><a href="/">Home</a></li>
                 <% if (typeof user !== "undefined"){ %>
@@ -91,12 +92,11 @@
                   <li data-toggle="modal" data-target="#signupModal"><a> Sign Up</a> </li>
                   <li data-toggle="modal" data-target="#loginModal"><a> Log In </a></li>
                 <% } %>
-                <!-- <li class=""><a href="#feature">About</a></li> -->
-                <!-- <li class=""><a href="#contact">Contact Us</a></li> -->
                 <li><a href="#randomPosts" data-toggle="modal" data-target="#searchModal"><span class="glyphicon glyphicon-search"></span> Search</a></li>
 
               </ul>
             </div>
+
           </div>
         </nav>
         </header>
@@ -113,79 +113,77 @@
 
 
 
-        <div class="wrapper">
-        <div class="container">
-          <div class="row">
-            <div class="banner-info text-center wow fadeIn delay-05s">
-              <% if (typeof user !== "undefined"){ %>
-                <h1 class="bnr-title">Welcome, <%= user.username %>!</h1>
-                <p class="bnr-para"> Have you been travelling lately?</p>
-                <p class="bnr-para"><a href="/trips">Update your trips!</a> </p>
-              <% }else{ %>
+                <div class="wrapper">
+                <div class="container">
+                  <div class="row">
+                    <div class="banner-info text-center wow fadeIn delay-05s">
+                      <br><br>
+                      <% if (typeof user !== "undefined"){ %>
+                        <h1 class="bnr-title">Welcome, <%= user.username %>!</h1>
+                        <p class="bnr-para"> Have you been travelling lately?</p>
+                        <br><br>
+                        <p class="bnr-para"><button type="button" class="btn btn-warning updTrip"><a href="/trips"><i class="fa fa-refresh" aria-hidden="true"></i>Update your trips!</a> </button></p>
+                      <% }else{ %>
 
-                <h1 class="bnr-title">You are here because</h1>
-                <h2 class="bnr-sub-title">Everything is about a new journey!!!</h2>
-                <p class="bnr-para"> You're thinkig of next destination? Or you have your bags packed but need some help with time and transport organiaztion?<br> You are on the right spot!  <br> Read about our fellow travellers experiencies and find all answers!</p>
-                <br>
-                <p class="bnr-para">And if you have story to share with us and your breath was taken away by your last adventure? <br> Tell us everything! </p>
-                  <% if (typeof user === "undefined"){ %>
-                    <div class="brn-btn">
-                      <span data-toggle="modal" data-target="#loginModal"><a href="#" class="btn btn-download">Log in</a></span>
-                      <span data-toggle="modal" data-target="#signupModal"><a href="#" class="btn btn-more">Sign up</a></span>
+                        <h1 class="bnr-title">You are here because</h1>
+                        <h2 class="bnr-sub-title">Everything is about a new journey!!!</h2>
+                        <p class="bnr-para"> You're thinkig of next destination? Or you have your bags packed but need some help with time and transport organiaztion?<br> You are on the right spot!  <br> Read about our fellow travellers experiencies and find all answers!</p>
+                        <br>
+                        <p class="bnr-para">And if you have story to share with us and your breath was taken away by your last adventure? <br> Tell us everything! </p>
+                          <% if (typeof user === "undefined"){ %>
+                            <div class="brn-btn">
+                              <span data-toggle="modal" data-target="#loginModal"><a href="#" class="btn btn-download">Log in</a></span>
+                              <span data-toggle="modal" data-target="#signupModal"><a href="#" class="btn btn-more">Sign up</a></span>
+                            </div>
+                          <% }%>
+                        <div class="overlay-detail">
+                          <a href="#"><i class="fa fa-angle-down"></i></a>
+                        </div>
+                      <%}%>
                     </div>
-                  <% }%>
-                <div class="overlay-detail">
-                  <a href="#"><i class="fa fa-angle-down"></i></a>
+                  </div>
                 </div>
-              <%}%>
-            </div>
+              </div>
+
           </div>
         </div>
-      </div>
-
-  </div>
-</div>
-    <!--/ HEADER-->
-    <!---->
 
     <%- body %>
 
     <footer>
-    <div class="verybottom">
-    	<div class="container">
-    		<div class="row">
-    			<div class="col-md-12">
-    				<div class="aligncenter">
-                    <ul class="social-network social-circle">
-                        <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
-                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-    				</div>
-    			</div>
-    		</div>
-    		<div class="row">
-    			<div class="col-md-12">
-    				<div class="aligncenter">
-    					<p>
-    						 &copy; Bootstrap Theme - All right reserved
-    					</p>
-                        <div class="credits">
-                            <!--
-                                All the links in the footer should remain intact.
-                                You can delete the links only if you purchased the pro version.
-                                Licensing information: https://bootstrapmade.com/license/
-                                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Groovin
-                            -->
-                            <a href="https://bootstrapmade.com/">Free Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                        </div>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    </div>
+      <div class="verybottom">
+      	<div class="container">
+      		<div class="row">
+      			<div class="col-md-12">
+      				<div class="aligncenter">
+                <ul class="social-network social-circle">
+                  <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+                  <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                  <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+      				</div>
+      			</div>
+      		</div>
+      		<div class="row">
+      			<div class="col-md-12">
+      				<div class="aligncenter">
+      					<p>&copy; Bootstrap Theme - All right reserved </p>
+                  <div class="credits">
+                      <!--
+                          All the links in the footer should remain intact.
+                          You can delete the links only if you purchased the pro version.
+                          Licensing information: https://bootstrapmade.com/license/
+                          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Groovin
+                      -->
+                      <a href="https://bootstrapmade.com/">Free Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                    </div>
+      				</div>
+      			</div>
+      		</div>
+      	</div>
+      </div>
     </footer>
 
 <!-- signup modal -->
@@ -198,7 +196,6 @@
     		</div>
     		<div class="modal-body main-center">
           <form method="post" action="/signup" class="form-horizontal" >
-
                 <div class="form-group">
                     <label for="name-input" class="cols-sm-2 control-label"><span class="red">*</span> Name and last name </label>
                       <div class="cols-sm-10">
@@ -260,7 +257,6 @@
                   </div>
                   <br><br>
                   <button type="submit" class="btn btn-primary btn-md btn-block">Sign up</button>
-
         </form>
 
     		</div>
@@ -430,31 +426,6 @@
           </script>
          <!-- ovdje zavrsava -->
 
-         <!-- js for pop up flash message window -->
-         <script>
-              $("#myModal").on("show", function() {    // wire up the OK button to dismiss the modal when shown
-                  $("#myModal a.btn").on("click", function(e) {
-                      console.log("button pressed");   // just as an example...
-                      $("#myModal").modal('hide');     // dismiss the dialog
-                  });
-              });
-              $("#myModal").on("hide", function() {    // remove the event listeners when the dialog is dismissed
-                  $("#myModal a.btn").off("click");
-              });
 
-              $("#myModal").on("hidden", function() {  // remove the actual elements from the DOM when fully hidden
-                  $("#myModal").remove();
-              });
-
-              $("#myModal").modal({                    // wire up the actual modal functionality and show the dialog
-                "backdrop"  : "static",
-                "keyboard"  : true,
-                "show"      : true                     // ensure the modal is shown immediately
-              });
-      </script>
-         <script
-         src="https://code.jquery.com/jquery-3.2.1.min.js"
-         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-         crossorigin="anonymous"></script>
   </body>
 </html>

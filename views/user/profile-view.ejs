@@ -23,49 +23,42 @@
 
 
 
-<!-- <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css"
+<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css"
 integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJtE" crossorigin="anonymous">
- -->
+
 
 <section>
 
 <div class="container" style="margin-top: 80px;">
-<div class="profile-head">
-<div class="col-sm-4 col-xs-12">
-<img id="profPic" src="<%= user.photo %>" class="img-responsive" />
-<br>
-<div class="social socPos">
-  <a href=""><i class="fa fa-twitter aboutUser"></i></a>
-  <a href=""><i class="fa fa-facebook aboutUser"></i></a>
-  <a href=""><i class="fa fa-google-plus aboutUser"></i></a>
-  <a href=""><i class="fa fa-linkedin aboutUser"></i></a>
+  <div class="profile-head">
+      <div class="col-sm-3 col-xs-12">
+        <img id="profPic" src="<%= user.photo %>" class="img-responsive" />
+          <br>
+          <div class="social socPos">
+            <a href=""><i class="fa fa-twitter faclass"></i></a>
+            <a href=""><i class="fa fa-facebook faclass"></i></a>
+            <a href=""><i class="fa fa-google-plus faclass"></i></a>
+            <a href=""><i class="fa fa-linkedin faclass"></i></a>
+          </div>
+      </div>
+
+      <div class="col-sm-5 col-xs-12 profSetup">
+        <h5 style="font-family:'Roboto', font-weight:bold;";><%= user.name %></h5>
+          <br><br>
+            <ul class="capitalize">
+              <li><span class="glyphicon glyphicon-briefcase faclass"></span><span class="aboutUser"><%= user.profession %> </span></li>
+              <li><span class="glyphicon glyphicon-map-marker faclass"></span><span class="aboutUser"><%= user.location %></span></li>
+              <li><span class="glyphicon glyphicon-envelope faclass"></span><span class="aboutUser"><a href="#" title="mail" style="text-transform:lowercase;"><%= user.email %></a></span></li>
+                <% if (user.favPlace !== ''){ %>
+                  <li><span class="glyphicon glyphicon-heart faclass"></span><span class="aboutUser"><%= user.favPlace %></span></li>
+                <% }%>
+            </ul>
+      </div>
+      <!-- <div class="col-sm-3 col-xs-12">
+        <p>something</p>
+      </div> -->
+  </div>
 </div>
-
-</div><!--col-md-4 col-sm-4 col-xs-12 close-->
-
-
-<div class="col-md-5 col-sm-5 col-xs-12 profSetup">
-  <br>
-<h5><%= user.name %></h5>
-<br><br>
-<ul>
-<li><span class="glyphicon glyphicon-briefcase aboutUser"></span><span class="aboutUser"><%= user.profession %> </span></li>
-<li><span class="glyphicon glyphicon-map-marker aboutUser"></span><span class="aboutUser"><%= user.location %></span></li>
-<li><span class="glyphicon glyphicon-envelope aboutUser"></span><span class="aboutUser"><a href="#" title="mail"><%= user.email %></a></span></li>
-<% if (user.favPlace !== ''){ %>
-  <li><span class="glyphicon glyphicon-heart aboutUser"></span><span class="aboutUser"><%= user.favPlace %></span></li>
-<% }%>
-
-</ul>
-
-
-</div><!--col-md-8 col-sm-8 col-xs-12 close-->
-
-
-
-
-</div><!--profile-head close-->
-</div><!--container close-->
 
 
 <div id="sticky" class="container">
@@ -84,75 +77,68 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
     </ul><!--nav-tabs close-->
 
     <!-- Tab panes -->
-    <div class="tab-content">
+  <div class="tab-content">
     <div class="tab-pane fade active in" id="profile">
-    <div class="container">
+      <div class="container">
+        <div class="col-sm-11" style="float:left;">
+          <div class="hve-pro">
+          <% if(user.about ==={}){ %>
+            <p>Go to Edit profile section and add about your self.</p>
+          <%} else {  %>
+            <p><%= user.about %></p>
+          <% } %>
+          </div>
+        </div>
 
-<div class="col-sm-11" style="float:left;">
-  <div class="hve-pro">
-  <% if(user.about ==={}){ %>
-    <p>`Go to Edit profile section and add about your self.`</p>
-  <%} else {  %>
-    <p><%= user.about %></p>
-  <% } %>
-  </div><!--hve-pro close-->
-</div><!--col-sm-12 close-->
+    <br clear="all" />
+      <div class="row" style="margin-left:50px;">
+        <div class="col-md-6">
+          <br><br>
+          <div class="table-responsive responsiv-table">
+            <table class="table bio-table">
+                <tbody>
+                   <tr>
+                      <td>Name:</td>
+                      <td><%= user.name %></td>
+                   </tr>
+                    <tr>
+                        <td>Contury:</td>
+                        <td><%= user.location %></td>
+                    </tr>
+                    <tr>
+                        <td>Occupation:</td>
+                        <td><%= user.profession %></td>
+                     </tr>
+              </tbody>
+            </table>
+            </div><!--table-responsive close-->
+        </div><!--col-md-6 close-->
 
-<br clear="all" />
-<div class="row">
-<div class="col-md-6">
+        <div class="col-md-6">
+        <br><br>
+          <div class="table-responsive responsiv-table">
+            <table class="table bio-table">
+              <tbody>
+               <tr>
+                  <td>Email:</td>
+                  <td style="text-transform:lowercase;"><%= user.email %></td>
+               </tr>
+               <tr>
+                  <td>Favorite place on Earth:</td>
+                  <td><%= user.favPlace %></td>
+               </tr>
+                <tr>
+                    <td>Social:</td>
+                    <td><%= user.social %></td>
+                 </tr>
+              </tbody>
+            </table>
+            </div><!--table-responsive close-->
+        </div><!--col-md-6 close-->
 
-<div class="table-responsive responsiv-table">
-  <table class="table bio-table">
-      <tbody>
-     <tr>
-        <td>Name:</td>
-        <td><%= user.name %></td>
-     </tr>
-    <tr>
-        <td>Contury:</td>
-        <td><%= user.location %></td>
-    </tr>
-    <tr>
-        <td>Occupation:</td>
-        <td><%= user.profession %></td>
-     </tr>
-
-    </tbody>
-  </table>
-  </div><!--table-responsive close-->
-</div><!--col-md-6 close-->
-
-<div class="col-md-6">
-
-<div class="table-responsive responsiv-table">
-  <table class="table bio-table">
-      <tbody>
-     <tr>
-        <td>Email:</td>
-        <td><%= user.email %></td>
-     </tr>
-     <tr>
-        <td>Favorite place on Earth:</td>
-        <td><%= user.favPlace %></td>
-     </tr>
-    <tr>
-        <td>Social:</td>
-        <td><%= user.social %></td>
-     </tr>
-
-    </tbody>
-  </table>
-  </div><!--table-responsive close-->
-</div><!--col-md-6 close-->
-
-</div><!--row close-->
-
-
-
-
-</div><!--container close-->
-</div><!--tab-pane close-->
+      </div><!--row close-->
+    </div><!--container close-->
+  </div><!--tab-pane close-->
 
 
 <div class="tab-pane fade" id="change">
@@ -170,96 +156,86 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
 
 <div class="row centerForm">
 
-<form class="form-horizontal main_form text-left" action="/profile" method="post"  id="edit_form" enctype="multipart/form-data">
-<fieldset>
-<div class="col-sm-12 col-md-6">
-  <input type="text" name="pic" value="" id ="pic" style="display: none">
+  <form class="form-horizontal main_form text-left" action="/profile" method="post"  id="edit_form" enctype="multipart/form-data">
+    <fieldset>
+    <div class="col-sm-12 col-md-6">
+      <input type="text" name="pic" value="" id ="pic" style="display: none">
 
-    <label class="col-sm-4 control-label" for="name-input"> Your Name </label>
-    <div class="col-sm-8">
-    <input  id="name-input" class="formLayout" type="text"
-        name="profileName" value="<%= user.name %>" placeholder="Your name" required>
-    </div>
-    <br><br>
+        <label class="col-sm-4 control-label" for="name-input"> Your Name </label>
+        <div class="col-sm-8">
+        <input  id="name-input" class="formLayout" type="text"
+            name="profileName" value="<%= user.name %>" placeholder="Your name" required>
+        </div>
+        <br><br>
 
-    <label class="col-sm-4 control-label" for="username-input"> Account Name </label>
-    <div class="col-sm-8">
-    <input  id="username-input" class="formLayout" type="text"
-        name="profileUsername" value="<%= user.username %>" placeholder="Account name can't left blank."required>
-    </div>
-    <br><br>
-
-  <!-- ovo su dpdatna polja -->
-
-    <label class="col-sm-4 control-label" for="userCountry"> Country </label>
-    <div class="col-sm-8">
-    <input  id="userCountry" type="text" class="formLayout"
-        name="userCountry" value="<%= user.location %>"placeholder="Country" required>
-    </div>
-    <br><br>
-    <label class="col-sm-4 control-label" for="userProfession"> Occupation</label>
-    <input  id="userProfession" type="text" class="formLayout"
-        name="userProfession" value="<%= user.profession %>" placeholder="Occupation" required>
-    <br><br>
-    <label class="col-sm-4 control-label" for="userEmail"> Email</label>
-    <div class="col-sm-8">
-    <input  id="userEmail" type="text" class="formLayout"
-        name="userEmail" value="<%= user.email %>" placeholder="Your email">
-    </div>
-    <br><br>
-  </div>
-  <div class="col-sm-12 col-md-6">
-  <label class="col-sm-4 control-label" for="userFavPlace"> Favorite place</label>
-  <div class="col-sm-8">
-  <input  id="userFavPlace" type="text" class="formLayout"
-      name="userFavPlace" value="<%= user.favPlace %>" placeholder="Your favorite place on Earth">
-  </div>
-  <br><br>
-
-    <!-- ovdje zavrsavaju dodatna polja -->
-
-    <label class="col-sm-4 control-label" for="current-password-input"> Password </label>
-    <div class="col-sm-8">
-    <input  id="current-password-input" type="password" class="formLayout"
-        name="profileCurrentPassword" placeholder="Password">
-    </div>
-    <br><br>
-    <label class="col-sm-4 control-label" for="new-password-input"> New Password </label>
-    <div class="col-sm-8">
-    <input  id="new-password-input" type="password" class="formLayout"
-        name="profileNewPassword" placeholder="New Password">
-    </div>
-    <br><br>
-    <label class="col-sm-4 control-label" for="userAbout">About me</label>
-    <div class="col-sm-8">
-    <textarea id="userAbout" name="userAbout" class="formLayout"> <%= user.about %> </textarea>
-    </div>
-    <br><br><br>
-
-    <div>
-      <label class="col-sm-4 control-label" for="user-photo-input">Upload photo</label>
-      <div class="col-sm-8">
-        <input id="user-photo-input" type="file" name="userPhoto" >
+        <label class="col-sm-4 control-label" for="username-input"> Account Name </label>
+        <div class="col-sm-8">
+        <input  id="username-input" class="formLayout" type="text"
+            name="profileUsername" value="<%= user.username %>" placeholder="Account name can't left blank."required>
+        </div>
+        <br><br>
+      <!-- ovo su dpdatna polja -->
+        <label class="col-sm-4 control-label" for="userCountry"> Country </label>
+        <div class="col-sm-8">
+        <input  id="userCountry" type="text" class="formLayout"
+            name="userCountry" value="<%= user.location %>"placeholder="Country" required>
+        </div>
+        <br><br>
+        <label class="col-sm-4 control-label" for="userProfession"> Occupation</label>
+        <input  id="userProfession" type="text" class="formLayout"
+            name="userProfession" value="<%= user.profession %>" placeholder="Occupation" required>
+        <br><br>
+        <label class="col-sm-4 control-label" for="userEmail"> Email</label>
+        <div class="col-sm-8">
+        <input  id="userEmail" type="text" class="formLayout"
+            name="userEmail" value="<%= user.email %>" placeholder="Your email">
+        </div>
+        <br><br>
       </div>
+      <div class="col-sm-12 col-md-6">
+        <label class="col-sm-4 control-label" for="userFavPlace"> Favorite place</label>
+        <div class="col-sm-8">
+          <input  id="userFavPlace" type="text" class="formLayout"
+              name="userFavPlace" value="<%= user.favPlace %>" placeholder="Your favorite place on Earth">
+        </div>
+        <br><br>
+        <!-- ovdje zavrsavaju dodatna polja -->
+        <label class="col-sm-4 control-label" for="current-password-input"> Password </label>
+        <div class="col-sm-8">
+          <input  id="current-password-input" type="password" class="formLayout"
+              name="profileCurrentPassword" placeholder="Password">
+        </div>
+        <br><br>
+        <label class="col-sm-4 control-label" for="new-password-input"> New Password </label>
+        <div class="col-sm-8">
+          <input  id="new-password-input" type="password" class="formLayout"
+              name="profileNewPassword" placeholder="New Password">
+        </div>
+        <br><br>
+        <label class="col-sm-4 control-label" for="userAbout">About me</label>
+        <div class="col-sm-8">
+          <textarea id="userAbout" name="userAbout" class="formLayout"> <%= user.about %> </textarea>
+        </div>
+        <br><br><br>
+        <div>
+          <label class="col-sm-4 control-label" for="user-photo-input">Upload photo</label>
+          <div class="col-sm-8">
+            <input id="user-photo-input" type="file" name="userPhoto" >
+          </div>
+        </div>
+        <br><br>
+        <div class="form-group" style="display:inline">
+          <div class="col-sm-4">
+            <button type="button" id="submitbut" class="btn btn-warning submit-button">Save</button>
+          </div>
+          <div class="col-sm-4">
+            <button type="button" class="btn btn-warning submit-button">Cancel</button>
+          </div>
+          </div>
+        </div>
     </div>
-    <br><br>
-    <div class="form-group" style="display:inline">
-      <div class="col-sm-4">
-        <button type="button" id="submitbut" class="btn btn-warning submit-button">Save</button>
-      </div>
-      <div class="col-sm-4">
-        <button type="button" class="btn btn-warning submit-button">Cancel</button>
-      </div>
-      </div>
-    </div>
-</div>
-
-<!-- upload profile picture -->
-
-
-
-</fieldset>
-</form>
+    </fieldset>
+  </form>
 </div>
 
 </div><!--container close -->
