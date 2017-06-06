@@ -1,11 +1,12 @@
 <br><br>
 <br><br>
 
-<h2>Edit trip</h2>
+<h2 style="margin-left:60px;">Edit trip</h2>
 <div class="container">
-  <form id ="formnew" action="/trips/<%=trip._id%>" method="post" class="well span8">
+  <form id ="formnew" action="/trips/<%=trip._id%>" method="post">
     <div class="row">
       <div class="col-sm-12 col-md-4">
+        <br>
         <div class="form-group">
           <label class="col-sm-4 control-label" for="trip-country-input"> Country </label>
           <input  class="formLayoutTrip"id="trip-country-input" type="text" name="tripCountry" value="<%= trip.country %>">
@@ -50,3 +51,4 @@
   </form>
 
 </div>
+<!-- class="well span8" -->

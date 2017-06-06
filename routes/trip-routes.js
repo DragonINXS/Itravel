@@ -108,11 +108,20 @@ console.log('==============');
 router.get('/trips/:id', (req, res, next)=>{
   // const productId = req.query.id;
   const tripId = req.params.id;
+
   Trip.findById(tripId, (err, theTrip)=>{
-    res.render('trips/trip-details-view.ejs', {
-      trip: theTrip,
-      layout: 'layouts/profile-layout.ejs'
-    });
+
+User.findById(theTrip.owner,(err,foundUser)=>{
+
+  res.render('trips/trip-details-view.ejs', {
+    trip: theTrip,
+    usersT:foundUser,
+    layout: 'layouts/profile-layout.ejs'
+
+
+  });
+});
+
   });
 });
 

@@ -5,7 +5,7 @@
       Create a trip
     </a>
   <% }  else { %>
-      <h2 class="trips-header"> Your Trips </h2>
+      <h2 class="trips-header"> My Trips </h2>
       <hr>
       <p class="createLink"><a href="/trips/new">Add a  new trip</a></p>
 
@@ -37,7 +37,7 @@
             </div>
 
             <div class="col-sm-9">
-              <h3><%= oneTrip.country %> , <%= oneTrip.cityVisited %></h3>
+              <h3><a href="/trips/<%= oneTrip._id %>" style="text-decoration:none;color:inherit;"><%= oneTrip.country %> , <%= oneTrip.cityVisited %></a></h3>
               <h5> Visited: <%= oneTrip.yearVisited %></h5>
               <% if (oneTrip.tripNote){ %>
               <h5>Note: <%= oneTrip.tripNote %></h5>
@@ -54,7 +54,7 @@
               </h5>
               <br>
               <p class="tripMenu">
-                <a href="/trips/<%= oneTrip._id %>">See details</a>
+                <!-- <a href="/trips/<%= oneTrip._id %>">See details</a> -->
                 <a href="/trips/<%= oneTrip._id %>/edit">Edit</a>
                 <div>
                 <form action="/trips/<%= oneTrip._id %>/delete" method="post">
