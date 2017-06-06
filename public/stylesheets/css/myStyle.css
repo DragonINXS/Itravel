@@ -117,11 +117,11 @@ background-color:#ffffff !important; transition:all ease 0.5s;border-top: 0px so
 .mg-auto{
     margin:0 auto;max-width: 200px;overflow: hidden;
 }
-.fake-styled-btn{
+/*.fake-styled-btn{
     background: #006cad;
     padding: 10px;
     color: #fff;
-}
+}*/
 #main-input{width:250px;}
 .input-place{
     position: absolute;top:35px;left: 20px;font-size:23px;color:gray;}
@@ -222,7 +222,10 @@ background: rgba(255,255,255,0.6);
 /* style for /trips page */
 
 
- .trips-header{color:#34ca78;}
+ .trips-header{
+   color:#34ca78;
+   margin-left: 30px;
+ }
 
 
  .srch{
@@ -257,7 +260,7 @@ background: rgba(255,255,255,0.6);
 }
 
 #testimonials .profile .travName {
-  font-weight: 700;
+  font-weight: 400;
   color: #03C4EB;
   margin-bottom: 5px;
   text-overflow: ellipsis;
@@ -319,11 +322,12 @@ background: rgba(255,255,255,0.6);
   margin-left: 10%;
   margin-top: 15%;
 }
-.seeDet{
+.seeDet a {
   color: #063f9b;
   font-size: 16px;
   font-weight: bold;
   font-family: 'Raleway';
+  text-decoration: none;
 }
 
 .tripMenu a {
@@ -334,7 +338,7 @@ background: rgba(255,255,255,0.6);
   text-decoration: none;
 }
 .socPos {
-  margin-left: 100px;
+  margin-left: 60px;
 
 }
 #profPic{
@@ -606,4 +610,44 @@ footer .verybottom {
 
 #pozadina{
   background-color: #3d4b60;
+}
+.roundImg{
+  width: 120px;
+  height: 120px;
+}
+.createLink a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+  color: #4b84d8;
+  /*margin-left: 50px;*/
+  margin-right: 50px;
+  float: right;
+}
+
+.quoteStyle{
+  color: #135770;
+  font-size: 16px;
+  font-style: oblique;
+  font-family: 'Raleway';
+}
+
+.tourAttractions{
+  font-size: 16px;
+  font-style: oblique;
+  color: inherit;
+  font-family: 'Raleway';
+  margin-top: 10px;
+}
+.tripDescription{
+  display: block;
+  max-width: 600px;
+  border: 1px #F2F1EF solid;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top: 20px;
+  color: inherit;
+  padding: 20px;
+  box-shadow: 5px 5px 5px #888888;
 }

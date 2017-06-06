@@ -31,6 +31,9 @@
 
     <!-- flash messages -->
 
+
+
+
     <% if (typeof successMessage !== "undefined"){ %>
       <% if (successMessage.length > 0) { %>
         <div id="myModal" class="modal fade">
@@ -53,7 +56,7 @@
             <div class="modal-content">
               <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <p class="errorMess"><%= errorMessage %></p>
+                <p class="errorMess"><%= errorMessage %></p>
               </div>
             </div>
           </div>
@@ -101,18 +104,6 @@
         </nav>
         </header>
 
-
-        <!-- ovdje pocinje forma za pravljenje profila ko se prvi put log in -->
-
-
-
-
-
-
-          <!-- ovdje zarsava form za prvi put log in -->
-
-
-
                 <div class="wrapper">
                 <div class="container">
                   <div class="row">
@@ -123,6 +114,10 @@
                         <p class="bnr-para"> Have you been travelling lately?</p>
                         <br><br>
                         <p class="bnr-para"><button type="button" class="btn btn-warning updTrip"><a href="/trips"><i class="fa fa-refresh" aria-hidden="true"></i>Update your trips!</a> </button></p>
+                        <!-- added -->
+
+                        <!-- added -->
+
                       <% }else{ %>
 
                         <h1 class="bnr-title">You are here because</h1>
@@ -136,9 +131,6 @@
                               <span data-toggle="modal" data-target="#signupModal"><a href="#" class="btn btn-more">Sign up</a></span>
                             </div>
                           <% }%>
-                        <div class="overlay-detail">
-                          <a href="#"><i class="fa fa-angle-down"></i></a>
-                        </div>
                       <%}%>
                     </div>
                   </div>

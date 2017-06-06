@@ -10,29 +10,7 @@ $('#trip-photo-input').on('click',()=>{
 //ends
 
 
-// random quotes
 
-function random_quote(quotes)
-{
-
-return quotes[Math.floor(Math.random()*quotes.length)];
-
-}
-
-var quotes = [
-'Traveling\,  it leaves you speechless then turns you into a storyteller\. \-Ibn Battuta',
-'To awaken alone in a strange town is one of the pleasantest sensations in the world\. \– Freya Stark',
-'Man cannot discover new oceans unless he has the courage to lose sight of the shore\. \– Andre Gide',
-'The world is a book, and those who do not travel read only one page\. \– Saint Augustine',
-'Twenty years from now you will be more disappointed by the things you didn’t do than by the ones you did do\. \– Mark Twain',
-'Travel is the only thing you buy that makes you richer\. \– Anonymous',
-'Life is either a daring adventure or nothing\. \– Helen Keller'
-];
-
-var i = random_quote(quotes);
-
-document.getElementById("MyQuote").innerHTML = i;
-// random quotes
 
 // flash messages modal
      $("#myModal").on("show", function() {    // wire up the OK button to dismiss the modal when shown

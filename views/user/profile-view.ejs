@@ -54,9 +54,6 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
                 <% }%>
             </ul>
       </div>
-      <!-- <div class="col-sm-3 col-xs-12">
-        <p>something</p>
-      </div> -->
   </div>
 </div>
 
@@ -85,7 +82,7 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
           <% if(user.about ==={}){ %>
             <p>Go to Edit profile section and add about your self.</p>
           <%} else {  %>
-            <p><%= user.about %></p>
+            <p style="text-transform:none;"><%= user.about %></p>
           <% } %>
           </div>
         </div>
@@ -174,7 +171,7 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
             name="profileUsername" value="<%= user.username %>" placeholder="Account name can't left blank."required>
         </div>
         <br><br>
-      <!-- ovo su dpdatna polja -->
+
         <label class="col-sm-4 control-label" for="userCountry"> Country </label>
         <div class="col-sm-8">
         <input  id="userCountry" type="text" class="formLayout"
@@ -199,7 +196,7 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
               name="userFavPlace" value="<%= user.favPlace %>" placeholder="Your favorite place on Earth">
         </div>
         <br><br>
-        <!-- ovdje zavrsavaju dodatna polja -->
+
         <label class="col-sm-4 control-label" for="current-password-input"> Password </label>
         <div class="col-sm-8">
           <input  id="current-password-input" type="password" class="formLayout"
@@ -220,7 +217,7 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
         <div>
           <label class="col-sm-4 control-label" for="user-photo-input">Upload photo</label>
           <div class="col-sm-8">
-            <input id="user-photo-input" type="file" name="userPhoto" >
+            <input id="user-photo-input" type="file" name="userPhoto">
           </div>
         </div>
         <br><br>
@@ -229,7 +226,7 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
             <button type="button" id="submitbut" class="btn btn-warning submit-button">Save</button>
           </div>
           <div class="col-sm-4">
-            <button type="button" class="btn btn-warning submit-button">Cancel</button>
+            <button type="button" class="btn btn-warning submit-button"><a href="/profile" style="text-decoration:none;color:#ffffff;">Cancel</a></button>
           </div>
           </div>
         </div>

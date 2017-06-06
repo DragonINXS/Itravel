@@ -9,25 +9,27 @@
       <div class="col-md-12">
         <div class="section-title-divider"></div>
         <p class="section-description">
-          <div id="MyQuote">
-              Quote
-          </div></p>
+          <div id="MyQuote" class="quoteStyle">
+            Quote
+          </div>
+        </p>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-4">
         <div class="profile">
-          <div class="picture"><img src="<%= trip.photoAddress %>" alt=""></div>
-          <div class="">
-            <p>Traveller <span class="travName">TRAVELLER'S NAME: <%= trip.owner %></span> was in <%= trip.cityVisited %>, <%= trip.country %> </p>
+          <br><br>
+          <div class="picture"><img src="<%= trip.photoAddress[0] %>" alt=""></div>
+          <div>
+            <p>Traveller <span class="travName"><%= trip.owner %></span> was in <%= trip.cityVisited %>, <%= trip.country %> </p>
           </div>
         </div>
       </div>
       <div class="col-md-8">
         <div class="quote">
           <h5> Year: <%= trip.yearVisited %></h5>
-          <b><img src="/img/quote_sign_left.png" alt=""></b> <%= trip.tourAttractions %> <small><img src="/img/quote_sign_right.png" alt=""></small>
+          <b><img src="/img/quote_sign_left.png" alt=""></b><span class="tourAttractions"><%= trip.tourAttractions %></span><small><img src="/img/quote_sign_right.png" alt=""></small>
         </div>
       </div>
     </div>
@@ -36,7 +38,7 @@
   </section>
   <!-- kraj probe -->
   <br>
-  <div data-toggle="modal" data-target="#loginModal"><a href="#"><span class="seeDet">See more details... </span></a></div>
+  <div data-toggle="modal" data-target="#loginModal"><span class="seeDet"><a href="#">See details... </a></span></div>
   <% } else { %>
 
     <!-- proba -->
@@ -44,7 +46,13 @@
     <div class="container wow fadeInUp">
       <div class="row">
         <div class="col-md-12">
-          <h3 class="section-title">Random quote</h3>
+          <h3 class="section-title">
+            <p class="section-description">
+              <div id="MyQuote" class="quoteStyle">
+                Quote
+              </div>
+            </p>
+          </h3>
           <div class="section-title-divider"></div>
         </div>
       </div>
@@ -61,20 +69,25 @@
       <div class="row">
         <div class="col-md-4">
           <div class="profile">
+            <br><br>
             <div class="picture"><img src="<%= trip.photoAddress[0] %>" alt=""></div>
-            <p>This trip was to <%= trip.cityVisited %>, <%= trip.country %> </p>
+            <p>This trip was to <strong><%= trip.cityVisited %></strong>,<strong><%= trip.country %></strong></p>
+            <% if(user._id.equals(trip.owner)){ %>
             <div>Note: <%= trip.tripNote %></div>
+            <% } %>
+
           </div>
         </div>
         <div class="col-md-8">
           <div class="quote">
+            <br><br>
             <h5> Year: <%= trip.yearVisited %></h5>
             <h5> I stayed: <%= trip.daysStayed %> </h5>
-            <h5> This trip I'll remember because... <%= trip.something %></h5>
-            <% if (trip.thingsSeen){ %>
-            <h5> Tourist attractions seen <%= trip.thingsSeen %></h5>
-            <% } %>
-            <b><img src="/img/quote_sign_left.png" alt=""></b> <%= trip.description %> <small><img src="/img/quote_sign_right.png" alt=""></small>
+            <h5> &#10084; <%= trip.something %></h5>
+
+            <h5> Tourist attractions seen: <p class="tourAttractions"><%= trip.tourAttractions %></p></h5>
+            <br>
+            <b><span class="tripDescription"><%= trip.description %></span>
 
           </div>
         </div>
@@ -84,8 +97,9 @@
           <div class="row">
             <div class="col-sm-4">
               <div class="profile">
+                <br><br>
                 <% if (trip.photoAddress.length > 0){ %>
-                  <p>My trip photos</p>
+                  <p>Memories</p>
                     <% trip.photoAddress.forEach((photoAddress)=>{ %>
                       <div class="picture"><img class="myImg" class="pic" src="<%= photoAddress %>"></div>
                     <% }); %>
@@ -98,10 +112,12 @@
     </section>
 
     <!-- kraj probe -->
+    <% if(user._id.equals(trip.owner)){ %>
+    <p><a href="/trips">Back to My trips</a></p>
+    <% } %>
+    </div>
   <% } %>
-<p><a href="/trips">Back to My trips</a></p>
 
-</div>
 
 <!-- Image Modal -->
 <div id="imgModal" class="imgModal">
@@ -264,32 +280,64 @@
               	</div>
                 </div>
               </div>
+
+  <!-- ================================================== -->
 <script>
-// Get the modal
-var modal = document.getElementById('imgModal');
+          // Get the modal
+          var modal = document.getElementById('imgModal');
 
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementsByClassName('myImg');
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-for(var i =0; i<img.length; i++){
+          // Get the image and insert it inside the modal - use its "alt" text as a caption
+          var img = document.getElementsByClassName('myImg');
+          var modalImg = document.getElementById("img01");
+          var captionText = document.getElementById("caption");
+          for(var i =0; i<img.length; i++){
 
-  img[i].onclick = function(){
-    console.log("Wooow")
-      modal.style.display = "block";
-      modalImg.src = this.src;
-      modal.modal();
-  }
+            img[i].onclick = function(){
+              console.log("Wooow")
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                modal.modal();
+            }
 
+          }
+
+          // Get the <span> element that closes the modal
+          var span = document.getElementsByClassName("closeImgModal")[0];
+
+          // When the user clicks on <span> (x), close the modal
+          span.onclick = function() {
+              modal.style.display = "none";
+          }
+
+//random quotes-start
+function random_quote(quotes)
+
+{
+return quotes[Math.floor(Math.random()*quotes.length)];
 }
 
+var quotes = [
+
+'Traveling\,  it leaves you speechless then turns you into a storyteller\. \-Ibn Battuta',
+
+'To awaken alone in a strange town is one of the pleasantest sensations in the world\. \– Freya Stark',
+
+'Man can not discover new oceans unless he has the courage to lose sight of the shore\. \– Andre Gide',
+
+'The world is a book, and those who do not travel read only one page\. \– Saint Augustine',
+
+'Twenty years from now you will be more disappointed by the things you didn’t do than by the ones you did do\. \– Mark Twain',
+
+'Travel is the only thing you buy that makes you richer\. \– Anonymous',
+
+'Life is either a daring adventure or nothing\. \– Helen Keller'
+
+];
+
+var i = random_quote(quotes);
+document.getElementById("MyQuote").innerHTML = i;
+
+//random quotes-start
 
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("closeImgModal")[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
 </script>

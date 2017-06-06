@@ -5,14 +5,9 @@
       Create a trip
     </a>
   <% }  else { %>
-    <a href="/trips/new">
-      Create a trip
-    </a>
-    <h2 class="trips-header"> Your Trips </h2>
-
-    <!-- <% if(successMessage.length > 0){ %>
-      <div class="success"> <%= successMessage %> </div>
-    <% } %> -->
+      <h2 class="trips-header"> Your Trips </h2>
+      <hr>
+      <p class="createLink"><a href="/trips/new">Add a  new trip</a></p>
 
     <% if (typeof successMessage !== "undefined"){ %>
       <% if (successMessage.length > 0) { %>
@@ -37,7 +32,7 @@
         <li>
           <div class="row">
             <div class="col-sm-3">
-              <a href="#"><img class="picDetail" src="<%= oneTrip.photoAddress[0]%>"></a>
+              <a href="/trips/<%= oneTrip._id %>"><img class="picDetail" src="<%= oneTrip.photoAddress[0]%>"></a>
               <br><br>
             </div>
 
@@ -77,7 +72,7 @@
 <% }%>
 
 <% if(trips.length !== 0){ %>
-<a href="/trips/new"> Create a Trip </a>
+  <p class="createLink"><a href="/trips/new">Add a  new trip</a></p>
 <% } %>
 </div>
 

@@ -12,7 +12,7 @@
           <a href="/trips/<%= oneTrip._id %>">
       <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
         <figure>
-          <img src="<%=oneTrip.photoAddress%>" class="img-responsive pic">
+          <img src="<%=oneTrip.photoAddress[0]%>" class="img-responsive pic">
           <figcaption>
               <h2><%= oneTrip.country %></h2>
             <p class="center"><%= ownersNames[index] %></p>
@@ -29,7 +29,7 @@
           <a href="/trips/<%= oneTrip._id %>">
       <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
         <figure>
-          <img src="<%=oneTrip.photoAddress%>" class="img-responsive pic">
+          <img src="<%=oneTrip.photoAddress[0]%>" class="img-responsive pic">
           <figcaption>
               <h2><%= oneTrip.country %></h2>
               <p class="center"><%= ownersNames[index] %></p>

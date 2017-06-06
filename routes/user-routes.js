@@ -29,20 +29,6 @@ routerThingy.get('/profile',
 
 
 
-// routerThingy.get('/user/:id', (req, res, next) => {
-
-routerThingy.get('/profile',
-
-    //     redirects to '/login' if you are NOT logged in
-    //                      |
-  ensure.ensureLoggedIn('/login'), myUploader.single('userPhoto'),
-
-  (req, res, next) => {
-  res.render('user/profile-view.ejs', {
-      successMessage: req.flash('success')
-    });
-  }
-);
 
 // <form method="post" action="/profile/edit">
 routerThingy.post('/profile',
@@ -50,6 +36,8 @@ routerThingy.post('/profile',
   ensure.ensureLoggedIn('/login'),
   myUploader.single('userPhoto'),
   (req, res, next) => {
+    console.log("LOOK!");
+    console.log(req.body.pic);
     const profileName = req.body.profileName;
     const profileUsername = req.body.profileUsername;
     const currentPassword = req.body.profileCurrentPassword;
@@ -64,17 +52,6 @@ routerThingy.post('/profile',
           return;
         }
 
-        // if there's a user with the username and it's not you
-        // if (foundUser && !foundUser._id.equals(req.user._id)) {
-        //   res.render('user/edit-profile-view.ejs', {
-        //     errorMessage: 'Username already taken. 😤'
-        //   });
-        //   return;
-        // }
-        // const profileChanges = {
-        //   name: req.body.profileName,
-        //   username: req.body.profileUsername
-        // };
      // add updates from form !!!!!!!
         req.user.name = req.body.profileName;
         req.user.username = req.body.profileUsername;
@@ -94,18 +71,20 @@ routerThingy.post('/profile',
         req.user.about = req.body.userAbout;
         if (req.body.pic === 'false') {
           req.user.save((err) => {
+
             if (err) {
               next(err);
               return;
             }
 
-    // req.flash('success', 'Changes saved.');
-
+    req.flash('success', 'Changes saved.');
     res.redirect('/profile');
   });
-return;
-}
+  }
+
+
 if (req.body.pic === 'true') {
+
 
   req.user.photo = `/uploads/${req.file.filename}`;
   req.user.save((err) => {

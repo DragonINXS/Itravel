@@ -20,7 +20,7 @@
         </div><br>
         <div class="form-group">
           <label class="col-sm-4 control-label" for="trip-days-input"> For how long:  </label>
-          <input  class="formLayoutTrip" id="trip-days-input" type="number" name="tripDays" value="<%= trip.daysStayed %>">
+          <input  class="formLayoutTrip" id="trip-days-input" type="text" name="tripDays" value="<%= trip.daysStayed %>">
         </div><br>
         </div>
 
@@ -43,9 +43,8 @@
         </div><br>
 
 
-
-        <button type="submit"> Save Changes </button>
-        <button type="button" class="btn btn-danger"><a href="/trips">Cancel </a></button>
+        <button type="button" class="btn btn-danger pull-right voffset3"><a href="/trips" style="text-decoration:none;">Cancel</a></button>
+        <button type="submit" class="btn btn-primary pull-right voffset3"> Save Changes </button>
       </div>
     </div>
   </form>
