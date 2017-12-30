@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema(
-  //1st argument -> fields of documents
-  {
+const userSchema = new Schema({
     name: { type: String, required: [true, 'Please insert your name.']},
     logInCount: { type: Number, default: 0},
     photo: {type: String, default: '/img/happyTraveller.jpg'},
@@ -15,14 +13,10 @@ const userSchema = new Schema(
     encryptedPassword: { type: String },
     social: { type: String},
     favPlace: { type: String },
-    //login with facebook users
     facebookID: { type: String },
-    //login with google users
     googleID: { type: String }
   },
-  //2nd arg -> additional options
   {
-    //adds createdAt & updatedAt
     timestamps:true
   }
 );

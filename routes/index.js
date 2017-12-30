@@ -5,6 +5,7 @@ const User        = require('../models/user-model.js');
 
 
 router.get('/', (req, res, next) => {
+  // find 6 trips
   Trip.aggregate([{$sample: {size:6}}],
     (err,foundTrips)=>{
     if (err) {
@@ -14,15 +15,17 @@ router.get('/', (req, res, next) => {
     const ownersPictures = [];
     const ownersNames = [];
 
+    // for each of the found trips get whose trip it is and image that is saved in it
+    // (I need this for my landing page)
     foundTrips.forEach((oneTrip)=>{
-    User.findById(oneTrip.owner, (err, theOwner)=>{
-      if (err){
-        next(err);
-        return;
-        }
-      ownersPictures.push(theOwner.photo);
-      ownersNames.push(theOwner.name);
-        });
+      User.findById(oneTrip.owner, (err, theOwner)=>{
+        if (err){
+          next(err);
+          return;
+          }
+        ownersPictures.push(theOwner.photo);
+        ownersNames.push(theOwner.name);
+      });
     });
 
     setTimeout(function(){
@@ -34,7 +37,7 @@ router.get('/', (req, res, next) => {
           ownersNames:ownersNames,
           user:req.user
         });
-        }, 500);
+      }, 500);
   });
 });
 

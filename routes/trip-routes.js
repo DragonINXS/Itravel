@@ -33,7 +33,7 @@ router.get('/trips',
 //CREATING TRIPS
 router.get('/trips/new',
   ensure.ensureLoggedIn('/login'),
-  (req, res, next)=>{  //we know this user is logged in thats why we dont need id
+  (req, res, next)=>{ 
     res.render('trips/new-trip-view.ejs',{
       layout: 'layouts/profile-layout.ejs'
     });

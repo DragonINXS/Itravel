@@ -14,62 +14,65 @@ const myUploader = multer({
  });
 
 //receiving and processing form
-authRoutes.post('/signup',ensure.ensureNotLoggedIn('/'), myUploader.single('userPhoto'), (req, res, next)=>{
-  const signupUsername = req.body.signupUsername;
-  const signupPassword = req.body.signupPassword;
+authRoutes.post('/signup', 
+    ensure.ensureNotLoggedIn('/'), 
+    myUploader.single('userPhoto'), 
+    (req, res, next)=>{
+      const signupUsername = req.body.signupUsername;
+      const signupPassword = req.body.signupPassword;
 
-  User.findOne(
-    { username: signupUsername },
-    { username:1},
-    (err, foundUser) => {
-      if (err){
-        next(err);
-        return;
-      }
+      User.findOne(
+        { username: signupUsername },
+        { username:1},
+        (err, foundUser) => {
+          if (err){
+            next(err);
+            return;
+          }
 
-      //don't let user register if the username is taken
-      if (foundUser){
-        req.flash('error', 'Username taken! Please choose a different one.');
-        res.redirect('/');
-        return;
-      }
-      // we are good to go, time to save the user.
-      //encrypt the password
-      const salt = bcrypt.genSaltSync(10); //signupPassword is the one user provided
-      const hashPass = bcrypt.hashSync(signupPassword, salt);
+          //don't let user register if the username is taken
+          if (foundUser){
+            req.flash('error', 'Username taken! Please choose a different one.');
+            res.redirect('/');
+            return;
+          }
+          // we are good to go, time to save the user.
+          //encrypt the password
+          const salt = bcrypt.genSaltSync(10); //signupPassword is the one user provided
+          const hashPass = bcrypt.hashSync(signupPassword, salt);
 
 
-      //create theUser
-      const theUser = new User();
-      theUser.name = req.body.signupName;
-      theUser.username = req.body.signupUsername;
-      theUser.encryptedPassword = hashPass;
-      theUser.location = req.body.userCountry;
-      theUser.profession = req.body.userProfession;
-      theUser.email = req.body.userEmail;
-      theUser.favPlace = req.body.userFavPlace;
-      if(req.file !== undefined){
-        theUser.photo = `/uploads/${req.file.filename}`;
-      }
-      //save theUser
-      theUser.save((err)=>{
-        if (err){
-          next(err);
-          return;
+          //create theUser (I chose this way just because I wanted to have saved different ways, since on class we used: const theUser = new User({ here goes all the fields }); )
+          const theUser = new User();
+          theUser.name = req.body.signupName;
+          theUser.username = req.body.signupUsername;
+          theUser.encryptedPassword = hashPass;
+          theUser.location = req.body.userCountry;
+          theUser.profession = req.body.userProfession;
+          theUser.email = req.body.userEmail;
+          theUser.favPlace = req.body.userFavPlace;
+          if(req.file !== undefined){
+            theUser.photo = `/uploads/${req.file.filename}`;
+          }
+          //save theUser
+          theUser.save((err)=>{
+            if (err){
+              next(err);
+              return;
+            }
+            //we put messages right before we redirect and it will be displayed after the redirect
+            req.flash(
+              //1sta rg -> the name  or the key if the message, not the message itself
+              // 'successfulSignup', ---> no need for this so we dont have to make duplicates on our home page
+              'success',
+              //2nd arg --> the actual message
+              'Welocome! You have registered successfully.'
+            );
+            //redirect to homepage if save is successful
+            res.redirect('/');
+          });
         }
-        //we put messages right before we redirect and it will be displayed after the redirect
-        req.flash(
-          //1sta rg -> the name  or the key if the message, not the message itself
-          // 'successfulSignup', ---> no need for this so we dont have to make duplicates on our home page
-          'success',
-          //2nd arg --> the actual message
-          'Welocome! You have registered successfully.'
-        );
-        //redirect to homepage if save is successful
-        res.redirect('/');
-      });
-    }
-  );
+      );
 });
                                              // local as in "localStrategy", our method of logging in
                                               //  |

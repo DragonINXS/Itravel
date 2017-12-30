@@ -117,7 +117,7 @@ passport.use(new GoogleStrategy(
 ));
 
 //PASSPORT GOES THROUGH THIS:
-    //1.our form
+    //1. our form
     //2. LocalStrategy callback
     //3. (if successful) passport.serializeUser()
 
