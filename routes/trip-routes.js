@@ -1,12 +1,12 @@
-const express = require('express');
-const ensure = require('connect-ensure-login');
-const multer = require('multer');
-const path = require('path');
+const express    = require('express');
+const ensure     = require('connect-ensure-login');
+const multer     = require('multer');
+const path       = require('path');
 
-const Trip = require('../models/trip-model.js');
-const User = require('../models/user-model.js');
+const Trip       = require('../models/trip-model.js');
+const User       = require('../models/user-model.js');
 
-const router = express.Router();
+const router     = express.Router();
 
 
 router.get('/trips',
@@ -19,7 +19,6 @@ router.get('/trips',
           next(err);
           return;
         }
-
         res.render('trips/trips-list-view.ejs',{
           trips: tripsList,
           successMessage: req.flash('success'),
@@ -34,7 +33,6 @@ router.get('/trips',
 //CREATING TRIPS
 router.get('/trips/new',
   ensure.ensureLoggedIn('/login'),
-
   (req, res, next)=>{  //we know this user is logged in thats why we dont need id
     res.render('trips/new-trip-view.ejs',{
       layout: 'layouts/profile-layout.ejs'
@@ -42,29 +40,16 @@ router.get('/trips/new',
   }
 );
 
-// const myTripUploader = multer({
-//     dest: path.join(__dirname, '../public/tripPhotos')
-// });
-
-
-
 var upload = multer({
     dest: path.join(__dirname, `../public/tripPhotos`)
 });
-
-
-
-
 var cpUpload = upload.fields([{ name: 'tripPhoto', maxCount: 6 }]);
-
-
 
 //SAVING NEW TRIPS
 router.post('/trips/new',
   ensure.ensureLoggedIn('/login'),
       cpUpload,
         (req, res, next)=>{
-
         const theTrip = new Trip();
           theTrip.owner= req.user._id;
           theTrip.country=req.body.tripCountry;
@@ -76,21 +61,11 @@ router.post('/trips/new',
           theTrip.something= req.body.tripSomething;
           theTrip.tripNote = req.body.tripNote;
 
-
-console.log('==============');
-console.log(req.files);
-console.log('==============');
-console.log( req.files.tripPhoto);
-console.log('==============');
-
-
-
           if (req.files.tripPhoto) {
             req.files.tripPhoto.forEach((file)=>{
               theTrip.photoAddress.push( `/tripPhotos/${file.filename}`);
             });
           }
-
 
           theTrip.save((err)=>{
             if(err){
@@ -106,22 +81,15 @@ console.log('==============');
 
 //RENDERING TRIP-DETAILS PAGE
 router.get('/trips/:id', (req, res, next)=>{
-  // const productId = req.query.id;
   const tripId = req.params.id;
-
   Trip.findById(tripId, (err, theTrip)=>{
-
-User.findById(theTrip.owner,(err,foundUser)=>{
-
-  res.render('trips/trip-details-view.ejs', {
-    trip: theTrip,
-    usersT:foundUser,
-    layout: 'layouts/profile-layout.ejs'
-
-
-  });
-});
-
+    User.findById(theTrip.owner,(err,foundUser)=>{
+      res.render('trips/trip-details-view.ejs', {
+        trip: theTrip,
+        usersT:foundUser,
+        layout: 'layouts/profile-layout.ejs'
+      });
+    });
   });
 });
 
@@ -164,9 +132,6 @@ router.post('/trips/:id', (req, res, next)=>{
         next(err);
         return;
       }
-console.log('User id:'+req.user._id);
-console.log("user"+req.user);
-      //this is how you would redirect to the product details page
       // res.redirect(`/products/${productId}`);
       res.redirect(`/trips/${tripId}`);
     }
@@ -185,52 +150,42 @@ router.post('/trips/:id/delete', (req, res, next)=>{
   });
 });
 
-//note
-
+// NOTE
 router.post('/trips/:id/note', (req, res, next)=>{
   const tripId = req.params.id;
   const tripChanges1 = {
     tripNote: req.body.tripNote
   };
-  Trip.findByIdAndUpdate(
-    tripId,
-    tripChanges1,
-    (err, theTrip) =>{
+  Trip.findByIdAndUpdate(tripId, tripChanges1, (err, theTrip) =>{
       if (err){
         next(err);
         return;
       }
-
-      //this is how you would redirect to the product details page
-      // res.redirect(`/products/${productId}`);
       res.redirect('/trips');
     }
   );
 });
 
-
 //SEARCH
 router.get('/search',(req, res, next)=>{
   const searchTerm = req.query.tripSearchTerm;
+
   if(!searchTerm){
     res.render('trips/no-search-view.ejs');
-      return;
+    return;
   }
-  console.log('~~~~~~~~~~~~~~~');
-  console.log(searchTerm);
+
   const searchRegex = new RegExp(searchTerm, 'i');
-  Trip.find(
-    { $or:[ {'country':searchRegex}, {'cityVisited':searchRegex}]},
-    (err, searchResults)=>{
+
+  Trip.find({ $or:[ {'country':searchRegex}, {'cityVisited':searchRegex}]}, (err, searchResults)=>{
     if(err){
       next(err);
       return;
     }
-      res.render('trips/trip-search-view.ejs',{
-        trips: searchResults
-      });
-    }
-  );
+    res.render('trips/trip-search-view.ejs',{
+      trips: searchResults
+    });
+  });
 });
 
 module.exports = router;

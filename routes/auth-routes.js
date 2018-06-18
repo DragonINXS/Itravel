@@ -1,24 +1,20 @@
-const express = require ('express');
-const bcrypt = require('bcryptjs');
-const passport = require('passport');
-const ensure = require('connect-ensure-login');
-const multer = require('multer');
-const path = require('path');
-
-
-const User = require('../models/user-model.js');
+const express    = require ('express');
+const bcrypt     = require('bcryptjs');
+const passport   = require('passport');
+const ensure     = require('connect-ensure-login');
+const multer     = require('multer');
+const path       = require('path');
+const User       = require('../models/user-model.js');
 
 const authRoutes = express.Router();
 
-
+// handle image upload
 const myUploader = multer({
   dest:path.join( __dirname, '../public/uploads')
  });
 
 //receiving and processing form
-authRoutes.post('/signup',
-  ensure.ensureNotLoggedIn('/'), myUploader.single('userPhoto'),
-  (req, res, next)=>{
+authRoutes.post('/signup',ensure.ensureNotLoggedIn('/'), myUploader.single('userPhoto'), (req, res, next)=>{
   const signupUsername = req.body.signupUsername;
   const signupPassword = req.body.signupPassword;
 
@@ -31,34 +27,31 @@ authRoutes.post('/signup',
         return;
       }
 
-  //don't let user register if the username is taken
+      //don't let user register if the username is taken
       if (foundUser){
         req.flash('error', 'Username taken! Please choose a different one.');
         res.redirect('/');
         return;
       }
-// we are good to go, time to save the user.
-
-        //encrypt the password
+      // we are good to go, time to save the user.
+      //encrypt the password
       const salt = bcrypt.genSaltSync(10); //signupPassword is the one user provided
       const hashPass = bcrypt.hashSync(signupPassword, salt);
 
 
-        //create theUser
-      const theUser = new User(  );
-        theUser.name = req.body.signupName;
-        theUser.username = req.body.signupUsername;
-        theUser.encryptedPassword = hashPass;
-        theUser.location = req.body.userCountry;
-        theUser.profession = req.body.userProfession;
-        theUser.email = req.body.userEmail;
-        theUser.favPlace = req.body.userFavPlace;
-
-        if (req.file !== undefined) {
-          theUser.photo = `/uploads/${req.file.filename}`;
-           }
-
-        //save theUser
+      //create theUser
+      const theUser = new User();
+      theUser.name = req.body.signupName;
+      theUser.username = req.body.signupUsername;
+      theUser.encryptedPassword = hashPass;
+      theUser.location = req.body.userCountry;
+      theUser.profession = req.body.userProfession;
+      theUser.email = req.body.userEmail;
+      theUser.favPlace = req.body.userFavPlace;
+      if(req.file !== undefined){
+        theUser.photo = `/uploads/${req.file.filename}`;
+      }
+      //save theUser
       theUser.save((err)=>{
         if (err){
           next(err);
@@ -78,18 +71,7 @@ authRoutes.post('/signup',
     }
   );
 });
-
-//
-// authRoutes.get('/login',
-//     ensure.ensureNotLoggedIn('/'),
-//     (req, res, next) =>{
-//   res.render('auth/login-view.ejs', {
-//     errorMessage: req.flash('error')
-//     //                          |
-//     //              default name for error message in Passport
-//   });
-// });
-//                                               // local as in "localStrategy", our method of logging in
+                                             // local as in "localStrategy", our method of logging in
                                               //  |
 authRoutes.post('/login',                     //  |
     ensure.ensureNotLoggedIn('/'),            //  |
@@ -103,7 +85,9 @@ authRoutes.post('/login',                     //  |
 );
 
 authRoutes.get('/logout', (req, res, next)=>{
-    //req.logout()--> method provided by Passport
+  // method provided by Passport
+  //     ^
+  //     |
   req.logout();
   req.flash('success', 'Thank you and happy travelling! We are waiting for new stories!');
   res.redirect('/');

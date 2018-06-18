@@ -1,23 +1,19 @@
 const express      = require('express');
 const ensure       = require('connect-ensure-login');
 const bcrypt       = require('bcryptjs');
-const multer = require('multer');
-const path = require('path');
+const multer       = require('multer');
+const path         = require('path');
 const User         = require('../models/user-model.js');
 
 
 const routerThingy = express.Router();
 
-const myUploader = multer({
+const myUploader   = multer({
   dest:path.join( __dirname, '../public/uploads')
  });
 
 routerThingy.get('/profile',
-
-    //     redirects to '/login' if you are NOT logged in
-    //                      |
-  ensure.ensureLoggedIn('/login'),
-
+  ensure.ensureLoggedIn('/login'),  // redirects to '/login' if you are NOT logged in
   (req, res, next) => {
     res.render('user/profile-view.ejs', {
       successMessage: req.flash('success')
@@ -25,19 +21,11 @@ routerThingy.get('/profile',
   }
 );
 
-
-
-
-
-
 // <form method="post" action="/profile/edit">
 routerThingy.post('/profile',
-
   ensure.ensureLoggedIn('/login'),
   myUploader.single('userPhoto'),
   (req, res, next) => {
-    console.log("LOOK!");
-    console.log(req.body.pic);
     const profileName = req.body.profileName;
     const profileUsername = req.body.profileUsername;
     const currentPassword = req.body.profileCurrentPassword;
@@ -52,10 +40,8 @@ routerThingy.post('/profile',
           return;
         }
 
-     // add updates from form !!!!!!!
         req.user.name = req.body.profileName;
         req.user.username = req.body.profileUsername;
-        // dodato na osnovu forme koju popunjavaju da bi napravili profil
         req.user.location = req.body.userCountry;
         req.user.profession = req.body.userProfession;
         req.user.email = req.body.userEmail;
@@ -71,43 +57,27 @@ routerThingy.post('/profile',
         req.user.about = req.body.userAbout;
         if (req.body.pic === 'false') {
           req.user.save((err) => {
-
             if (err) {
               next(err);
               return;
             }
-
-    req.flash('success', 'Changes saved.');
-    res.redirect('/profile');
-  });
-  }
-
-
-if (req.body.pic === 'true') {
-
-
-  req.user.photo = `/uploads/${req.file.filename}`;
-  req.user.save((err) => {
-    if (err) {
-      next(err);
-      return;
-    }
-
-    // req.flash('success', 'Changes saved.');
-
-    res.redirect('/profile');
-  });
-
-}
-
-
+            req.flash('success', 'Changes saved.');
+            res.redirect('/profile');
+          });
+        }
+        if (req.body.pic === 'true') {
+          req.user.photo = `/uploads/${req.file.filename}`;
+          req.user.save((err) => {
+            if (err) {
+              next(err);
+              return;
+            }
+            res.redirect('/profile');
+          });
+        }
       }
     );
   }
 );
-
-
-
-
 
 module.exports = routerThingy;
