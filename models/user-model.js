@@ -4,9 +4,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
   //1st argument -> fields of documents
   {
-    name: { type: String,
-          required: [true, 'Please insert your name.']
-        },
+    name: { type: String, required: [true, 'Please insert your name.']},
     logInCount: { type: Number, default: 0},
     photo: {type: String, default: '/img/happyTraveller.jpg'},
     profession: { type: String },
@@ -19,12 +17,10 @@ const userSchema = new Schema(
     favPlace: { type: String },
     //login with facebook users
     facebookID: { type: String },
-
     //login with google users
     googleID: { type: String }
 
   },
-
   //2nd arg -> additional options
   {
     //adds createdAt & updatedAt

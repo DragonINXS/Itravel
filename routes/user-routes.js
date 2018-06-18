@@ -1,6 +1,6 @@
 const express      = require('express');
 const ensure       = require('connect-ensure-login');
-const bcrypt       = require('bcrypt');
+const bcrypt       = require('bcryptjs');
 const multer = require('multer');
 const path = require('path');
 const User         = require('../models/user-model.js');

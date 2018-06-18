@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "bcrypt": "^1.0.2",
+    "bcryptjs": "^2.4.3",
     "body-parser": "~1.16.0",
     "bootbox": "^4.4.0",
     "bootstrap-confirm-delete": "^2.1.2",

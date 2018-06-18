@@ -16,32 +16,11 @@ const tripSchema = new Schema(
     // photoAddress: {type: String, default: '/img/defaultTrip.jpg'},
     //reference the ID og the user
     owner: {type: Schema.Types.ObjectId },
-    // user as a subdocument
-    // owner: {type: User.Schema}
   },
   {
     timestamps: true
   }
-
-  // {
-  //   traveller: {type: User.Schema},
-  //   destinations: [],
-  //   visitedOn: { type: Date },
-  //   duration: { type: String },
-  //   // placesVisited: [],
-  //   upl_photos: {type: String},
-  //   description: { type: String}
-  //   //reference the ID og the user
-  //   // owner: {type: Schema.Types.ObjectId }
-  //
-  // },
-  // {
-  //   timestamps: true
-  // }
 );
-
-
-
 
 const Trip = mongoose.model('Trip', tripSchema);
 
